@@ -2065,4 +2065,33 @@ window.tildastatcookie='no';setTimeout(function(){(function(d,w,k,o,g) {var n=d.
   window.addEventListener('mouseenter',function(e){if(inReel(e.target))e.stopImmediatePropagation();},true);
   window.addEventListener('focus',function(e){if(inReel(e.target)&&Date.now()-ptr<800)e.stopImmediatePropagation();},true);
 })();
+</script><style id="variant-tech-2-ios">
+/* цифры 01–06 у направлений не нужны (решение Маши) */
+html body #services .gear-n{display:none!important}
+@media (max-width:640px){
+  /* круг крупнее */
+  html #gearScreen{width:min(82vw,330px)!important;max-width:min(82vw,330px)!important}
+  /* Safari на айфоне перехватывает касание картинки (свои жесты) и обрывает свайп — пусть касание ловит сам круг */
+  html #gearScreen,html #gearScreen *{-webkit-touch-callout:none;-webkit-user-drag:none}
+  html #gearScreen img,html #gearScreen canvas,html #gearScreen svg{pointer-events:none}
+  html body #services .t2-track .gear-item{font-size:1.08rem}
+}
+</style>
+<script id="variant-tech-2-ios">
+/* Запасной свайп на касаниях (iPhone): если основной жест не сработал, свайп по кругу или ленте
+   переключает на соседнее направление. Горизонтальный свайп не отдаём странице, вертикальный — отдаём. */
+(function(){
+  var mq=window.matchMedia('(max-width:640px)');
+  var box=document.querySelector('#services .gear-c');if(!box)return;
+  var items=[].slice.call(document.querySelectorAll('#services .gear-item'));
+  function pressed(){for(var k=0;k<items.length;k++)if(items[k].getAttribute('aria-pressed')==='true')return k;return 0;}
+  var t=null;
+  box.addEventListener('touchstart',function(e){if(!mq.matches||e.touches.length!==1){t=null;return}var p=e.touches[0];t={x:p.clientX,y:p.clientY,i:pressed(),h:null,dx:0};},{passive:true});
+  box.addEventListener('touchmove',function(e){if(!t)return;var p=e.touches[0],dx=p.clientX-t.x,dy=p.clientY-t.y;
+    if(t.h===null&&(Math.abs(dx)>8||Math.abs(dy)>8))t.h=Math.abs(dx)>Math.abs(dy);
+    if(t.h&&e.cancelable)e.preventDefault();t.dx=dx;},{passive:false});
+  box.addEventListener('touchend',function(){var s=t;t=null;if(!s||!s.h||Math.abs(s.dx)<35)return;
+    setTimeout(function(){if(pressed()!==s.i)return; /* основной жест уже переключил */
+      var j=s.i+(s.dx<0?1:-1);if(j>=0&&j<items.length)items[j].click();},140);},{passive:true});
+})();
 </script></body> </html>

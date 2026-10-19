@@ -2078,20 +2078,27 @@ html body #services .gear-n{display:none!important}
 }
 </style>
 <script id="variant-tech-2-ios">
-/* Запасной свайп на касаниях (iPhone): если основной жест не сработал, свайп по кругу или ленте
-   переключает на соседнее направление. Горизонтальный свайп не отдаём странице, вертикальный — отдаём. */
+/* Свайп пальцем на телефоне обрабатывает ТОЛЬКО этот код (одним жестом — одно переключение).
+   Основной жест варианта для пальца отключён: на iPhone оба срабатывали и кадр дёргался «туда-сюда».
+   Мышь по-прежнему ведёт основной жест. Вертикальный свайп отдаём странице. */
 (function(){
   var mq=window.matchMedia('(max-width:640px)');
   var box=document.querySelector('#services .gear-c');if(!box)return;
   var items=[].slice.call(document.querySelectorAll('#services .gear-item'));
   function pressed(){for(var k=0;k<items.length;k++)if(items[k].getAttribute('aria-pressed')==='true')return k;return 0;}
-  var t=null;
-  box.addEventListener('touchstart',function(e){if(!mq.matches||e.touches.length!==1){t=null;return}var p=e.touches[0];t={x:p.clientX,y:p.clientY,i:pressed(),h:null,dx:0};},{passive:true});
+  /* палец не пускаем в основной жест (перехват на window срабатывает раньше обработчиков элементов) */
+  ['pointerdown','pointermove','pointerup','pointercancel'].forEach(function(t){
+    window.addEventListener(t,function(e){if(e.pointerType==='touch'&&mq.matches&&e.target.closest&&e.target.closest('#services .gear-c'))e.stopImmediatePropagation();},true);
+  });
+  var t=null,busy=0;
+  box.addEventListener('touchstart',function(e){if(!mq.matches||e.touches.length!==1){t=null;return}var p=e.touches[0];t={x:p.clientX,y:p.clientY,h:null,dx:0};},{passive:true});
   box.addEventListener('touchmove',function(e){if(!t)return;var p=e.touches[0],dx=p.clientX-t.x,dy=p.clientY-t.y;
     if(t.h===null&&(Math.abs(dx)>8||Math.abs(dy)>8))t.h=Math.abs(dx)>Math.abs(dy);
     if(t.h&&e.cancelable)e.preventDefault();t.dx=dx;},{passive:false});
-  box.addEventListener('touchend',function(){var s=t;t=null;if(!s||!s.h||Math.abs(s.dx)<35)return;
-    setTimeout(function(){if(pressed()!==s.i)return; /* основной жест уже переключил */
-      var j=s.i+(s.dx<0?1:-1);if(j>=0&&j<items.length)items[j].click();},140);},{passive:true});
+  box.addEventListener('touchend',function(e){var s=t;t=null;if(!s||!s.h||Math.abs(s.dx)<30)return;
+    if(e.cancelable)e.preventDefault(); /* без «клика» по кнопке под пальцем после свайпа */
+    var now=Date.now();if(now-busy<250)return;busy=now;
+    var i=pressed(),j=i+(s.dx<0?1:-1);if(j>=0&&j<items.length)items[j].click();},{passive:false});
+  box.addEventListener('touchcancel',function(){t=null;},{passive:true});
 })();
 </script></body> </html>

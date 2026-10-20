@@ -1173,29 +1173,37 @@ function apply(){mq.matches?setup():teardown();}
 apply();
 if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(apply);
 })();
-</script> <!-- /Кейсы C1 --> <style id="variant-fix-cq">@media (min-width:641px){#cases .b-cases-fest .b-cases-need{display:none} #cases .b-cases-fest .b-cases-gal{grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);height:clamp(340px,40vw,560px)} #cases .b-cases-fest .b-cases-ph--main,#cases .b-cases-fest .b-cases-ph--rig{grid-row:1;grid-column:auto;aspect-ratio:auto}}@media (min-width:861px){#cases .b-cases-fest .b-cases-gal{grid-template-columns:calc(var(--bc-pad) + (100% - 2*var(--bc-pad) - clamp(24px,4vw,72px))*12/22 + clamp(24px,4vw,72px) - var(--bc-gap)) minmax(0,1fr)}}</style> <!-- Значок «Спектакли и анимация с Пушкинским театром» → /teatr. Вставлен в конец записи «Кейсы», после <style id="variant-fix-cq">. Классы tb-. -->
+</script> <!-- /Кейсы C1 --> <style id="variant-fix-cq">@media (min-width:641px){#cases .b-cases-fest .b-cases-need{display:none} #cases .b-cases-fest .b-cases-gal{grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);height:clamp(340px,40vw,560px)} #cases .b-cases-fest .b-cases-ph--main,#cases .b-cases-fest .b-cases-ph--rig{grid-row:1;grid-column:auto;aspect-ratio:auto}}@media (min-width:861px){#cases .b-cases-fest .b-cases-gal{grid-template-columns:calc(var(--bc-pad) + (100% - 2*var(--bc-pad) - clamp(24px,4vw,72px))*12/22 + clamp(24px,4vw,72px) - var(--bc-gap)) minmax(0,1fr)}}</style> <!-- Значок «Спектакли и анимация с Пушкинским театром» → /teatr. Компактная полоса. Вставлен в конец записи «Кейсы», после <style id="variant-fix-cq">. Классы tb-. -->
 <style id="teatr-badge-css">
-#teatr-badge{padding:0 0 clamp(40px,5vw,72px)}
-#teatr-badge .tb-a{position:relative;display:grid;grid-template-columns:clamp(200px,24vw,320px) minmax(0,1fr) auto;align-items:center;gap:clamp(18px,2.6vw,36px);padding:12px clamp(16px,2vw,24px) 12px 12px;border:1px solid var(--line);border-radius:var(--r,22px);background:#1C1C21;text-decoration:none;color:var(--text);transition:border-color .2s var(--ease)}
+#teatr-badge{padding:0 0 clamp(36px,4.5vw,64px)}
+#teatr-badge .tb-a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:clamp(14px,2vw,24px);min-height:72px;padding:10px 12px 10px 10px;border:1px solid var(--line);border-radius:calc(var(--r,22px) - 4px);background:#1C1C21;text-decoration:none;color:var(--text);transition:border-color .2s var(--ease)}
 #teatr-badge .tb-a:hover{border-color:var(--line2)}
 #teatr-badge .tb-a:focus-visible{outline:2px solid var(--text);outline-offset:4px}
-#teatr-badge .tb-pic{position:relative;aspect-ratio:16/10;border-radius:calc(var(--r,22px) - 8px);overflow:hidden;background:#060607}
-#teatr-badge .tb-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block;transition:transform .5s var(--ease)}
+#teatr-badge .tb-pic{position:relative;width:clamp(80px,9vw,120px);aspect-ratio:3/2;border-radius:10px;overflow:hidden;background:#060607;flex:none}
+#teatr-badge .tb-pic img{width:100%;height:100%;object-fit:cover;object-position:55% 60%;display:block;transition:transform .5s var(--ease)}
 #teatr-badge .tb-pic::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(8,8,10,.25) 1px,transparent 1.6px) 0 0/5px 5px;pointer-events:none}
-#teatr-badge .tb-a:hover .tb-pic img{transform:scale(1.04)}
-#teatr-badge .tb-txt{display:grid;gap:10px;align-content:center;min-width:0}
-#teatr-badge .tb-new{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:var(--chip-r,8px);background:rgba(8,8,10,.78);box-shadow:inset 0 0 0 1px var(--line2);font-size:.78rem;font-weight:600;line-height:1;letter-spacing:.04em;text-transform:uppercase}
+#teatr-badge .tb-a:hover .tb-pic img{transform:scale(1.05)}
+#teatr-badge .tb-txt{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;min-width:0}
+#teatr-badge .tb-new{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border-radius:var(--chip-r,8px);background:rgba(8,8,10,.78);box-shadow:inset 0 0 0 1px var(--line2);font-size:.72rem;font-weight:600;line-height:1;letter-spacing:.05em;text-transform:uppercase}
 #teatr-badge .tb-new::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--red)}
-#teatr-badge .tb-t{font-family:var(--display);font-weight:700;font-stretch:88%;letter-spacing:-.012em;font-size:clamp(1.3rem,1rem + 1.2vw,2.1rem);line-height:1.06;text-wrap:balance}
-#teatr-badge .tb-s{font-size:.95rem;line-height:1.45;color:var(--text2)}
-#teatr-badge .tb-arr{display:grid;place-items:center;width:clamp(52px,4.6vw,64px);height:clamp(52px,4.6vw,64px);border-radius:var(--btn-r,10px);background:var(--red);color:var(--on-red);box-shadow:inset 0 -3px 0 rgba(10,10,11,.22);font-size:1.4rem;line-height:1;transition:background-color .18s var(--ease),transform .18s var(--ease)}
+#teatr-badge .tb-t{font-family:var(--display);font-weight:700;font-stretch:90%;letter-spacing:-.01em;font-size:clamp(1.05rem,.95rem + .45vw,1.35rem);line-height:1.15}
+#teatr-badge .tb-s{font-size:.9rem;line-height:1.3;color:var(--text2)}
+#teatr-badge .tb-arr{display:grid;place-items:center;width:48px;height:48px;border-radius:var(--btn-r,10px);background:var(--red);color:var(--on-red);box-shadow:inset 0 -3px 0 rgba(10,10,11,.22);font-size:1.25rem;line-height:1;transition:background-color .18s var(--ease),transform .18s var(--ease)}
 #teatr-badge .tb-a:hover .tb-arr{background:var(--red-t);transform:translateX(3px)}
 @media (max-width:640px){
-  #teatr-badge .tb-a{grid-template-columns:minmax(0,1fr) auto;gap:14px 12px;padding:10px 10px 16px}
-  #teatr-badge .tb-pic{grid-column:1/-1;aspect-ratio:16/8}
-  #teatr-badge .tb-txt{padding-left:6px;gap:8px}
-  #teatr-badge .tb-s{font-size:.9rem}
-  #teatr-badge .tb-arr{width:48px;height:48px;align-self:end}
+  #teatr-badge .tb-a{grid-template-columns:76px minmax(0,1fr) auto;gap:12px;padding:8px 8px 8px 8px}
+  #teatr-badge .tb-pic{width:76px;aspect-ratio:1}
+  #teatr-badge .tb-txt{gap:4px;flex-direction:column;align-items:flex-start}
+  #teatr-badge .tb-new{padding:5px 8px;font-size:.68rem}
+  #teatr-badge .tb-t{font-size:1rem;line-height:1.2}
+  #teatr-badge .tb-s{font-size:.82rem}
+  #teatr-badge .tb-arr{width:44px;height:44px}
+}
+@media (max-width:380px){
+  #teatr-badge .tb-a{grid-template-columns:60px minmax(0,1fr) auto;gap:10px}
+  #teatr-badge .tb-pic{width:60px}
+  #teatr-badge .tb-t{font-size:.94rem}
+  #teatr-badge .tb-arr{width:44px;height:44px}
 }
 @media (prefers-reduced-motion:reduce){#teatr-badge .tb-a:hover .tb-pic img,#teatr-badge .tb-a:hover .tb-arr{transform:none}}
 </style>
@@ -1205,8 +1213,8 @@ if(mq.addEventListener)mq.addEventListener('change',apply);else mq.addListener(a
       <span class="tb-pic"><img src="https://static.tildacdn.com/tild3861-6236-4865-b762-323534343761/fest-stage-760.webp" alt="" width="760" height="570" loading="lazy" decoding="async"></span>
       <span class="tb-txt">
         <span class="tb-new">Новое</span>
-        <span class="tb-t">Спектакль или&nbsp;анимация от&nbsp;Пушкинского театра&nbsp;— на&nbsp;ваше мероприятие</span>
-        <span class="tb-s">Сцена и&nbsp;техника&nbsp;— «Спектр», под&nbsp;ключ</span>
+        <span class="tb-t">Спектакль или&nbsp;анимация от&nbsp;Пушкинского театра</span>
+        <span class="tb-s">сцена и&nbsp;техника&nbsp;— наши</span>
       </span>
       <span class="tb-arr" aria-hidden="true">→</span>
     </a>

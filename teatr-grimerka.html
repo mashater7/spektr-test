@@ -848,7 +848,16 @@ input:focus,textarea:focus{outline:none;border-color:var(--red-t)}
 .hosts.has-on .h-card:not(.on) .h-pics.lit .bulb::after{opacity:0}
 @media (max-width:640px){
   .hosts{--fr:20px;--b:11px}
-  .tt-fmt>li::before{left:0;right:0;border-radius:4px}
+  /* телефон: одна штанга во всю ширину, костюмы в ряд, листаются вбок пальцем (родной скролл + scroll-snap).
+     Штанга нарисована фоном самой ленты: фон не прокручивается вместе с карточками, крючки едут по ней. */
+  .tt-fmt{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
+    margin:0 calc(-1*var(--gut));padding:0 var(--gut) 18px;scroll-padding:0 var(--gut);scrollbar-width:none;
+    background:linear-gradient(180deg,#E3C595 0%,#A07A4A 45%,#5B4227 100%) 0 6px/100% 7px no-repeat}
+  .tt-fmt::-webkit-scrollbar{display:none}
+  .tt-fmt>li{flex:0 0 82%;scroll-snap-align:start}
+  .tt-fmt>li:last-child{scroll-snap-align:end}
+  .tt-fmt>li::before{display:none}
+  .tt-swing{will-change:transform}
 }
 @media (max-width:960px) and (min-width:641px){
   .tt-fmt>li:nth-child(2)::before{left:0;border-radius:4px 0 0 4px}
@@ -1138,6 +1147,27 @@ input:focus,textarea:focus{outline:none;border-color:var(--red-t)}
       });
     },{threshold:.35});
     sio.observe(document.querySelector('.tt-fmt'));
+  }
+  /* Телефон: при сдвиге ленты костюмы отстают и качаются (затухающий маятник), в покое неподвижны.
+     Только чтение scroll-события и transform; никаких touch/pointer-обработчиков — листает сам браузер. */
+  var rail=document.querySelector('.tt-fmt'),narrow=matchMedia('(max-width:640px)');
+  if(!reduce&&rail&&swings.length){
+    var th=0,om=0,prevX=0,prevT=0,raf=0,still=0,mul=[1,.86,1.12];
+    function frame(t){
+      var dt=Math.min(3,(t-prevT)/16.67||1);prevT=t;
+      var x=rail.scrollLeft,dx=(x-prevX)/dt;prevX=x;
+      /* лента едет влево (dx>0) — низ карточек отстаёт вправо: поворот против часовой */
+      om+=(-dx*.01-.06*th-.11*om)*dt;th+=om*dt;
+      if(th>7)th=7;if(th<-7)th=-7;
+      still=(Math.abs(dx)<.05&&Math.abs(th)<.02&&Math.abs(om)<.01)?still+1:0;
+      if(still>3){th=om=0;swings.forEach(function(el){el.style.transform=''});raf=0;return;}
+      swings.forEach(function(el,i){el.style.transform='rotate('+(th*mul[i%3]).toFixed(3)+'deg)';});
+      raf=requestAnimationFrame(frame);
+    }
+    rail.addEventListener('scroll',function(){
+      if(raf||!narrow.matches)return;
+      prevT=performance.now();still=0;raf=requestAnimationFrame(frame);
+    },{passive:true});
   }
   /* пылинки в луче первого экрана: только на компьютере и только когда первый экран виден */
   if(reduce||!wide.matches)return;

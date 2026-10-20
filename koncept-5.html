@@ -1070,4 +1070,8 @@ html #who .w-scr img{filter:saturate(.7) brightness(.8)}
   document.querySelectorAll('a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});
 })();
 </script>
-</body></html>
+<style id="fix-color">
+/* Маша: «почему всё ч/б — похоже на похороны». Все фото — в цвете. */
+html body img, html body video, html body picture, html body [style*="background-image"]{filter:none!important}
+html body .k2-bw,html body .k2-dim,html body .kb .bw,html body .ghost{filter:none!important}
+</style></body></html>

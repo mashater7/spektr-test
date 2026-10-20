@@ -712,5 +712,9 @@ if('IntersectionObserver' in window){
 }else{body.classList.remove('hero-on');}
 })();
 </script>
-</body>
+<style id="fix-color">
+/* Маша: «почему всё ч/б — похоже на похороны». Все фото — в цвете. */
+html body img, html body video, html body picture, html body [style*="background-image"]{filter:none!important}
+html body .k2-bw,html body .k2-dim,html body .kb .bw,html body .ghost{filter:none!important}
+</style></body>
 </html>

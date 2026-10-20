@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Спектакль или анимация на ваше мероприятие | Пушкинский театр и «Спектр»</title>
+<meta name="description" content="Артисты Пушкинского музыкально-драматического театра на вашем празднике: спектакль, анимация для детей и взрослых, ведущий. Сцена и техника от «Спектра», под ключ.">
+<!-- Вариант 2 «Яркий фото-первый» (21.10.2026). Песочница, на Тильду не выкладывалось. Заглушки ищите по классу .ph и пометке «уточняем». -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400..700&family=Tektur:wdth,wght@75..100,500..800&display=swap">
+<style>
+:root{
+  --bg:#FBFAF7;          /* основной фон: светлый, чуть тёплый */
+  --sun:#FFF0C2;         /* оттенок 1 на утверждение: солнечный жёлтый, фон раздела */
+  --peach:#FFE4D9;       /* оттенок 2 на утверждение: персиковый, фон раздела */
+  --white:#FFFFFF;
+  --ink:#1D1B19; --ink2:#55504A; --line:#E7E2DA;
+  --red:#FF4122; --red-d:#E5300F; --red-t:#D12A0C;
+  --display:"Tektur",system-ui,sans-serif; --body:"Onest",system-ui,sans-serif;
+  --r:18px; --ease:cubic-bezier(.23,1,.32,1);
+  --wrap:1240px; --g:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:clamp(1rem,.96rem + .2vw,1.1rem);line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--g)}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1,h2{font-family:var(--display);font-weight:700;font-stretch:88%;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,1.2rem + 2.7vw,3.6rem);line-height:1.04}
+h2{font-size:clamp(1.85rem,1.2rem + 2vw,3.1rem);line-height:1.05}
+h2::after{content:"";display:block;width:44px;height:3px;border-radius:2px;background:var(--red);margin-top:16px}
+h3{font-size:clamp(1.15rem,1.05rem + .4vw,1.4rem);line-height:1.25;font-weight:650}
+p{margin:0}
+.muted{color:var(--ink2)}
+.num{font-family:var(--display);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;font:600 1rem/1 var(--body);text-decoration:none;white-space:nowrap;border:1.5px solid transparent;cursor:pointer;touch-action:manipulation;transition:background-color .2s ease,border-color .2s ease,transform .16s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible,.circ:focus-visible,.lnk:focus-visible{outline:2.5px solid var(--ink);outline-offset:3px}
+.btn-red{background:var(--red);color:#1D1B19}
+.btn-line{border-color:var(--ink);color:var(--ink);background:transparent}
+@media (hover:hover) and (pointer:fine){
+  .btn-red:hover{background:var(--red-d)}
+  .btn-line:hover{background:var(--ink);color:#fff}
+}
+.btn svg{width:20px;height:20px;flex:none}
+.lnk{font-weight:600;text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:2px;text-underline-offset:6px;min-height:44px;display:inline-flex;align-items:center}
+.circ{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);display:inline-grid;place-items:center;text-decoration:none;font:700 .7rem/1 var(--body);flex:none;background:var(--white);transition:border-color .2s ease,transform .16s var(--ease)}
+.circ:active{transform:scale(.95)}
+.circ svg{width:20px;height:20px}
+@media (hover:hover) and (pointer:fine){.circ:hover{border-color:var(--ink)}}
+
+/* шапка */
+.hdr{position:sticky;top:0;z-index:40;background:rgba(251,250,247,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:24px;height:68px}
+.logo img{height:28px;width:auto;filter:brightness(0)}
+.nav{display:flex;gap:26px;margin-left:12px}
+.nav a{text-decoration:none;color:var(--ink2);font-size:.95rem;transition:color .2s ease}
+.nav a:hover{color:var(--ink)}
+.acts{margin-left:auto;display:flex;align-items:center;gap:10px}
+.tel{text-decoration:none;margin-right:6px}
+.tel .num{font-size:1.05rem}
+.hdr .btn{min-height:44px;padding:0 20px;font-size:.92rem}
+.tel-m{display:none}
+@media (max-width:1060px){.nav{display:none}}
+@media (max-width:760px){
+  .tel,.hdr .circ,.hdr .btn{display:none}
+  .tel-m{display:inline-flex;align-items:center;gap:8px;text-decoration:none;min-height:44px}
+  .tel-m svg{width:18px;height:18px;color:var(--red-t)}
+  .tel-m .num{font-size:.98rem}
+}
+
+/* первый экран */
+.hero{padding:clamp(28px,4vw,56px) 0 clamp(48px,6vw,88px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,4vw,60px);align-items:center}
+.hero-txt p.sub{margin-top:20px;font-size:clamp(1.08rem,1rem + .35vw,1.3rem);line-height:1.45;color:var(--ink2);max-width:30em}
+.hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:30px}
+.hero-cta .btn-red{min-height:60px;padding:0 32px;font-size:1.05rem}
+.hero-more{display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:18px}
+.mosaic{display:grid;grid-template-columns:1.15fr 1fr 1fr;grid-template-rows:repeat(6,minmax(0,1fr));gap:12px;height:clamp(460px,44vw,620px)}
+.tile{position:relative;overflow:hidden;border-radius:var(--r);background:var(--line)}
+.tile img{width:100%;height:100%;object-fit:cover}
+.t1{grid-column:1;grid-row:1/7}
+.t2{grid-column:2/4;grid-row:1/4}
+.t3{grid-column:2;grid-row:4/7}
+.t4{grid-column:3;grid-row:4/7}
+.t1 img{object-position:50% 20%}
+.t3 img{object-position:50% 18%}
+.t4 img{object-position:50% 25%}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .mosaic{order:-1;height:auto;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:auto;gap:8px}
+  .mosaic{grid-template-rows:clamp(150px,44vw,300px)}
+  .t1,.t3,.t4{grid-row:1}
+  .t1{grid-column:1}.t3{grid-column:2}.t4{grid-column:3}
+  .t2{display:none}
+  .tile{border-radius:14px}
+  .hero-cta .btn-red{width:100%}
+}
+
+/* разделы */
+.sec{padding:clamp(64px,8vw,120px) 0}
+.sec-head{margin-bottom:clamp(30px,4vw,52px);max-width:44rem}
+.sec-head p{margin-top:16px;color:var(--ink2);font-size:1.08rem}
+.tint-sun{background:var(--sun)}
+.tint-peach{background:var(--peach)}
+
+/* заглушка фото */
+.ph{display:grid;place-items:center;padding:18px;text-align:center;background:repeating-linear-gradient(135deg,#F3EFE8 0 12px,#EDE8E0 12px 24px);color:var(--ink2);font-size:.88rem;font-weight:600;line-height:1.35}
+.ph span{background:rgba(255,255,255,.85);padding:8px 12px;border-radius:10px;border:1px dashed #C9C1B5;max-width:26ch}
+.stub{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--white);border:1px dashed #C9C1B5;font-size:.82rem;font-weight:600;color:var(--ink2);white-space:nowrap}
+
+/* что можно заказать */
+.fmt{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.fmt>li{background:var(--white);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 0 var(--line),0 10px 30px -18px rgba(90,60,30,.25)}
+.fmt>li:nth-child(1){grid-column:span 7}
+.fmt>li:nth-child(2){grid-column:span 5}
+.fmt>li:nth-child(3){grid-column:span 5}
+.fmt>li:nth-child(4){grid-column:span 7}
+.fmt .pic{aspect-ratio:16/9;overflow:hidden}
+.fmt .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.fmt .pic.ph{aspect-ratio:16/9}
+@media (hover:hover) and (pointer:fine){.fmt>li:hover .pic img{transform:scale(1.03)}}
+.fmt .body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.fmt .who{font-size:.95rem}
+.fmt .who b{font-weight:650}
+.fmt .meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:auto;padding-top:8px;font-size:.88rem;color:var(--ink2);align-items:center}
+@media (max-width:860px){
+  .fmt{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--g) * -1);padding:4px var(--g) 18px;scroll-padding:0 var(--g);scrollbar-width:none}
+  .fmt::-webkit-scrollbar{display:none}
+  .fmt>li{flex:0 0 84%;scroll-snap-align:start}
+}
+
+/* кто приедет */
+.hosts{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+.host{position:relative;border-radius:var(--r);overflow:hidden;background:var(--white);display:flex;flex-direction:column}
+.host .pic{overflow:hidden}
+.host .pic img{width:100%;height:100%;object-fit:cover}
+.host .txt{padding:22px 24px 26px}
+.host .txt h3{font-family:var(--display);font-weight:700;font-stretch:90%;font-size:clamp(1.4rem,1.1rem + .9vw,2rem);letter-spacing:-.01em}
+.host .rank{margin-top:10px;font-size:1.05rem;font-weight:600;line-height:1.4}
+.host .rank em{font-style:normal;color:var(--red-t)}
+.host .more{margin-top:10px;color:var(--ink2);font-size:.98rem}
+.host.big{grid-row:span 2;display:grid;grid-template-rows:1fr auto}
+.host.big .pic{min-height:440px}
+.host.big .pic img{object-position:50% 18%}
+.host.sm{display:grid;grid-template-columns:42% 1fr}
+.host.sm .pic img{object-position:50% 22%}
+.host.sm .pic{min-height:260px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.fact{display:flex;align-items:baseline;gap:8px;padding:10px 14px;border-radius:12px;background:var(--sun)}
+.fact .num{font-size:1.5rem;color:var(--ink)}
+.fact span:last-child{font-size:.9rem;line-height:1.25}
+.note-temp{margin-top:18px;font-size:.88rem;color:var(--ink2)}
+@media (max-width:860px){
+  .hosts{grid-template-columns:1fr}
+  .host.big{grid-row:auto}
+  .host.big .pic{min-height:0;aspect-ratio:4/4.4}
+  .host.sm{grid-template-columns:1fr}
+  .host.sm .pic{min-height:0;aspect-ratio:4/3.6}
+}
+
+/* как это было */
+.cases{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;align-items:stretch}
+.case-fest{grid-column:span 8;border-radius:var(--r);overflow:hidden;background:var(--white);display:grid;grid-template-rows:auto 1fr}
+.case-fest .pics{display:grid;grid-template-columns:1.6fr 1fr;gap:4px;height:clamp(240px,26vw,360px)}
+.case-fest .pics{overflow:hidden}.case-fest .pics img{width:100%;height:100%;min-height:0;object-fit:cover}
+.case-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:12px}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:6px}
+.nums div{display:flex;flex-direction:column;gap:2px}
+.nums .num{font-size:clamp(1.8rem,1.3rem + 1.4vw,2.6rem);line-height:1;font-weight:700;font-stretch:88%}
+.nums span:last-child{font-size:.88rem;color:var(--ink2);line-height:1.3}
+.case-ros{grid-column:span 4;border-radius:var(--r);overflow:hidden;background:var(--white);display:grid;grid-template-rows:auto 1fr}
+.case-ros .ph{height:clamp(240px,26vw,360px)}
+.partner{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:18px 22px;border-radius:var(--r);background:var(--white)}.partner::before{content:"";width:28px;height:3px;border-radius:2px;background:var(--red)}
+@media (max-width:900px){
+  .case-fest,.case-ros{grid-column:1/-1}
+  .case-fest .pics{height:auto;grid-template-columns:1fr}
+  .case-fest .pics img{aspect-ratio:16/10}
+  .case-fest .pics img+img{display:none}
+  .case-ros .ph{height:200px}
+  .nums{grid-template-columns:1fr 1fr;gap:16px}
+}
+
+/* отзывы */
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rev{border:1.5px dashed #CFC6B8;border-radius:var(--r);padding:26px 24px;background:rgba(255,255,255,.6);display:flex;flex-direction:column;gap:14px;min-height:220px}
+.rev .q{font-family:var(--display);font-size:3rem;line-height:.6;color:var(--red);height:22px}
+.rev p{color:var(--ink2)}
+.rev .by{margin-top:auto;display:flex;align-items:center;gap:12px}
+.rev .ava{width:44px;height:44px;border-radius:50%;background:repeating-linear-gradient(135deg,#F3EFE8 0 6px,#EDE8E0 6px 12px);flex:none}
+.rev .by span{font-size:.9rem;color:var(--ink2);line-height:1.3}
+@media (max-width:860px){
+  .revs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(var(--g) * -1);padding:4px var(--g) 18px;scroll-padding:0 var(--g);scrollbar-width:none}
+  .revs::-webkit-scrollbar{display:none}
+  .rev{flex:0 0 82%;scroll-snap-align:start}
+}
+
+/* под ключ */
+.turnkey{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.tk-pic{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3}
+.tk-pic img{width:100%;height:100%;object-fit:cover}
+.tk-sum{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-top:26px}
+.tk-sum>div{background:var(--white);border-radius:14px;padding:18px 18px 20px}
+.tk-sum b{display:block;font-family:var(--display);font-weight:700;font-stretch:90%;font-size:1.2rem;margin-bottom:6px}
+.tk-sum .plus{display:grid;place-items:center;font:700 1.8rem/1 var(--display);color:var(--red);background:none;padding:0}
+.tk-res{margin-top:14px;padding:16px 18px;border-radius:14px;background:var(--ink);color:#fff;font-weight:600}
+.tk-res span{color:#FFB3A3}
+@media (max-width:860px){
+  .turnkey{grid-template-columns:1fr}
+  .tk-sum{grid-template-columns:1fr}
+  .tk-sum .plus{height:20px}
+}
+
+/* финал */
+.final{padding:clamp(56px,7vw,100px) 0}
+.final-box{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;background:var(--white);border-radius:calc(var(--r) + 8px);padding:clamp(26px,4vw,56px);box-shadow:0 20px 50px -30px rgba(90,60,30,.35)}
+.final-box h2{font-size:clamp(2rem,1.3rem + 2.4vw,3.4rem)}
+.final-box p{margin-top:16px;color:var(--ink2);font-size:1.08rem}
+.final-act{display:flex;flex-direction:column;gap:12px}
+.final-act .btn{width:100%;min-height:60px}
+.final-act .msgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.final-act .tel-big{text-align:center;margin-top:6px;text-decoration:none}
+.final-act .tel-big .num{font-size:clamp(1.4rem,1.1rem + 1vw,1.9rem);display:block}
+.final-act .tel-big span:last-child{font-size:.88rem;color:var(--ink2)}
+.final-ppl{display:flex;margin-top:24px}
+.final-ppl img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:3px solid var(--white);margin-left:-10px}
+.final-ppl img:first-child{margin-left:0}
+@media (max-width:860px){.final-box{grid-template-columns:1fr}}
+
+/* подвал */
+.ftr{border-top:1px solid var(--line);padding:40px 0 30px;font-size:.92rem;color:var(--ink2)}
+.ftr .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+.ftr .logo img{height:26px;filter:brightness(0);margin-bottom:12px}
+.ftr nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+.ftr nav a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.ftr .req,.ftr .legal{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:20px}
+.ftr .legal a{text-decoration:underline;text-underline-offset:3px}
+
+/* нижняя панель на телефоне */
+.mbar{display:none}
+@media (max-width:760px){
+  .mbar{position:fixed;left:0;right:0;bottom:0;z-index:45;display:flex;gap:8px;align-items:center;padding:10px var(--g) calc(10px + env(safe-area-inset-bottom));background:rgba(251,250,247,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .mbar .btn{flex:1;min-height:48px}
+  body{padding-bottom:76px}
+}
+
+/* появление: только transform и opacity */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+  .js .rv.in{opacity:1;transform:none}
+  .js .tile{opacity:0;transform:scale(.96);animation:tileIn .7s var(--ease) forwards}
+  .js .t1{animation-delay:.05s}.js .t2{animation-delay:.13s}.js .t3{animation-delay:.21s}.js .t4{animation-delay:.29s}
+  .js .hero-txt>*{opacity:0;transform:translateY(12px);animation:txtIn .6s var(--ease) forwards}
+  .js .hero-txt>*:nth-child(2){animation-delay:.06s}.js .hero-txt>*:nth-child(3){animation-delay:.12s}.js .hero-txt>*:nth-child(4){animation-delay:.18s}
+}
+@keyframes tileIn{to{opacity:1;transform:none}}
+@keyframes txtIn{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important;animation:none!important}
+}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;z-index:99;background:#fff;padding:10px 14px;border-radius:10px}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
+
+<header class="hdr"><div class="wrap bar">
+  <a class="logo" href="/" aria-label="Спектр, на главную"><img src="https://static.tildacdn.com/tild6533-6336-4664-b938-383830333161/logo-white-crop.png" alt="" width="126" height="30"></a>
+  <nav class="nav" aria-label="Главное меню"><a href="/#services">Услуги</a><a href="/#cases">Кейсы</a><a href="/#agency">Агентствам</a></nav>
+  <div class="acts">
+    <a class="tel" href="tel:+79778100802"><span class="num">+7 (977) 810-08-02</span></a>
+    <a class="circ" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4 3 11l6 2.5M21 4l-3.5 16-8.5-6.5M21 4 9 13.5V19l3-3.2"/></svg></a>
+    <a class="circ" href="https://web.max.ru/263464272" target="_blank" rel="noopener" aria-label="Написать в MAX">MAX</a>
+    <a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету</a>
+    <a class="tel-m" href="tel:+79778100802" aria-label="Позвонить: +7 (977) 810-08-02"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span class="num">+7 977 810-08-02</span></a>
+  </div>
+</div></header>
+
+<main id="main">
+
+<!-- 1. Первый экран -->
+<section class="hero"><div class="wrap hero-grid">
+  <div class="hero-txt">
+    <h1>Спектакль или анимация на&nbsp;ваше мероприятие</h1>
+    <p class="sub">Артисты Пушкинского театра приедут с&nbsp;программой, а&nbsp;сцену, звук и&nbsp;свет привезёт «Спектр».</p>
+    <div class="hero-cta">
+      <a class="btn btn-red js-quiz" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету</a>
+      <a class="circ" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener" aria-label="Написать в Telegram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4 3 11l6 2.5M21 4l-3.5 16-8.5-6.5M21 4 9 13.5V19l3-3.2"/></svg></a>
+      <a class="circ" href="https://web.max.ru/263464272" target="_blank" rel="noopener" aria-label="Написать в MAX">MAX</a>
+    </div>
+    <div class="hero-more"><a class="lnk" href="https://teatrpushkino.ru/tags/afisha" target="_blank" rel="noopener">Афиша театра</a></div>
+  </div>
+  <div class="mosaic" aria-label="Фото артистов и сцены">
+    <figure class="tile t1" style="margin:0"><img src="img-hosts/bykov-stage.jpg" alt="Дмитрий Быков ведёт концерт на сцене с микрофоном" width="800" height="1200" fetchpriority="high"></figure>
+    <figure class="tile t2" style="margin:0"><img src="https://static.tildacdn.com/tild3931-3433-4830-a564-623463633835/fest-stage-1160.webp" alt="Сцена фестиваля в Летнем театре Пушкино" width="1160" height="653" fetchpriority="high"></figure>
+    <figure class="tile t3" style="margin:0"><img src="img-hosts/fortovaya.jpg" alt="Елена Фортовая" width="800" height="1200"></figure>
+    <figure class="tile t4" style="margin:0"><img src="img-hosts/gavrilov.jpg" alt="Сергей Гаврилов" width="900" height="1200"></figure>
+  </div>
+</div></section>
+
+<!-- 2. Что можно заказать -->
+<section class="sec tint-sun" id="formats"><div class="wrap">
+  <div class="sec-head rv"><h2>Что можно заказать</h2></div>
+  <ul class="fmt">
+    <li class="rv">
+      <div class="pic"><img src="https://static.tildacdn.com/tild3931-3433-4830-a564-623463633835/fest-stage-1160.webp" alt="Спектакль на большой сцене" loading="lazy" width="1160" height="653"></div>
+      <div class="body">
+        <h3>Спектакль</h3>
+        <p class="muted">Детский, взрослый или вечерний. Нужна сцена. Если её нет, поставим подиум.</p>
+        <p class="who"><b>Кто приедет:</b> труппа театра</p>
+        <div class="meta">Длительность <span class="stub">уточняем</span> Цена от <span class="stub">уточняем</span></div>
+      </div>
+    </li>
+    <li class="rv">
+      <div class="pic ph"><span>нужно фото: анимация с&nbsp;детьми</span></div>
+      <div class="body">
+        <h3>Анимация для детей</h3>
+        <p class="muted">Артисты играют с&nbsp;детьми прямо среди гостей.</p>
+        <p class="who"><b>Кто приедет:</b> от&nbsp;двух артистов</p>
+        <div class="meta">Длительность <span class="stub">уточняем</span> Цена от <span class="stub">уточняем</span></div>
+      </div>
+    </li>
+    <li class="rv">
+      <div class="pic ph"><span>нужно фото: анимация для&nbsp;взрослых</span></div>
+      <div class="body">
+        <h3>Анимация для взрослых</h3>
+        <p class="muted">Интерактив и&nbsp;номера для гостей корпоратива, свадьбы или юбилея.</p>
+        <p class="who"><b>Кто приедет:</b> от&nbsp;двух артистов</p>
+        <div class="meta">Длительность <span class="stub">уточняем</span> Цена от <span class="stub">уточняем</span></div>
+      </div>
+    </li>
+    <li class="rv">
+      <div class="pic"><img src="img-hosts/bykov-2.jpg" alt="Ведущий Дмитрий Быков" loading="lazy" style="object-position:50% 22%"></div>
+      <div class="body">
+        <h3>Ведущий</h3>
+        <p class="muted">Проведёт праздник, официальную часть или концерт.</p>
+        <p class="who"><b>Кто приедет:</b> один из&nbsp;ведущих театра</p>
+        <div class="meta">Длительность <span class="stub">уточняем</span> Цена от <span class="stub">уточняем</span></div>
+      </div>
+    </li>
+  </ul>
+</div></section>
+
+<!-- 3. Кто приедет -->
+<section class="sec" id="hosts"><div class="wrap">
+  <div class="sec-head rv"><h2>Кто приедет</h2></div>
+  <div class="hosts">
+    <article class="host big rv">
+      <div class="pic"><img src="img-hosts/bykov-1.jpg" alt="Дмитрий Быков" loading="lazy" width="738" height="1200"></div>
+      <div class="txt">
+        <h3>Дмитрий Быков</h3>
+        <p class="rank"><em>Заслуженный артист России.</em> Ведущий солист Пушкинского музыкально-драматического театра</p>
+        <div class="facts">
+          <div class="fact"><span class="num">20</span><span>лет солист и&nbsp;ведущий Ансамбля Александрова</span></div>
+          <div class="fact"><span class="num">56</span><span>стран на&nbsp;гастролях</span></div>
+        </div>
+        <p class="more">С&nbsp;1994 по&nbsp;2015 год вёл концертные и&nbsp;специальные программы Академического ансамбля песни и&nbsp;пляски имени А.&nbsp;В.&nbsp;Александрова.</p>
+      </div>
+    </article>
+    <article class="host sm rv">
+      <div class="pic"><img src="img-hosts/fortovaya.jpg" alt="Елена Фортовая" loading="lazy" width="800" height="1200"></div>
+      <div class="txt">
+        <h3>Елена Фортовая</h3>
+        <p class="rank">Солистка группы <em>«Ассорти»</em></p>
+        <p class="more">Ведущая солистка Пушкинского музыкально-драматического театра.</p>
+      </div>
+    </article>
+    <article class="host sm rv">
+      <div class="pic"><img src="img-hosts/gavrilov.jpg" alt="Сергей Гаврилов" loading="lazy" width="900" height="1200"></div>
+      <div class="txt">
+        <h3>Сергей Гаврилов</h3>
+        <p class="rank">Ведёт официальные и&nbsp;протокольные мероприятия</p>
+        <p class="more">Ведущий солист Пушкинского музыкально-драматического театра.</p>
+      </div>
+    </article>
+  </div>
+  <p class="note-temp">Тексты о&nbsp;ведущих временные: пришлют свои.</p>
+</div></section>
+
+<!-- 4. Как это уже было -->
+<section class="sec tint-peach" id="cases"><div class="wrap">
+  <div class="sec-head rv"><h2>Как это уже было</h2></div>
+  <div class="cases">
+    <article class="case-fest rv">
+      <div class="pics">
+        <img src="https://static.tildacdn.com/tild3931-3433-4830-a564-623463633835/fest-stage-1160.webp" alt="Спектакль фестиваля на сцене Летнего театра" loading="lazy" width="1160" height="653">
+        <img src="https://static.tildacdn.com/tild6430-3134-4263-b237-633137616262/fest-rig.jpg" alt="Свет и звук на сцене фестиваля" loading="lazy">
+      </div>
+      <div class="case-body">
+        <h3>Театральный фестиваль в&nbsp;Пушкино</h3>
+        <p class="muted">Каждый август на&nbsp;сцене Летнего театра в&nbsp;Центральном парке.</p>
+        <div class="nums">
+          <div><span class="num">9</span><span>спектаклей в&nbsp;2025</span></div>
+          <div><span class="num">4</span><span>дня фестиваля</span></div>
+          <div><span class="num">3,6&nbsp;тыс.</span><span>зрителей</span></div>
+          <div><span class="num">14</span><span>театров в&nbsp;2026</span></div>
+        </div>
+      </div>
+    </article>
+    <article class="case-ros rv">
+      <div class="ph"><span>нужно фото: спектакль для&nbsp;Росатома</span></div>
+      <div class="case-body">
+        <h3>Детский праздник для Росатома</h3>
+        <p class="muted">Сначала артисты занимались с&nbsp;детьми, а&nbsp;потом показали на&nbsp;большой сцене большой детский спектакль.</p>
+      </div>
+    </article>
+    <p class="partner rv"><b>«Спектр» стал генеральным партнёром театра</b><span class="muted">и&nbsp;с&nbsp;2024 года обеспечивает фестиваль техникой</span></p>
+  </div>
+</div></section>
+
+<!-- 5. Отзывы -->
+<section class="sec" id="reviews"><div class="wrap">
+  <div class="sec-head rv"><h2>Что говорят заказчики</h2></div>
+  <div class="revs">
+    <div class="rev rv"><div class="q" aria-hidden="true">“</div><p>Здесь будет отзыв. Попросим у&nbsp;клиента.</p><div class="by"><div class="ava"></div><span>Имя, должность, компания<br><span class="stub">уточняем</span></span></div></div>
+    <div class="rev rv"><div class="q" aria-hidden="true">“</div><p>Здесь будет отзыв. Попросим у&nbsp;клиента.</p><div class="by"><div class="ava"></div><span>Имя, должность, компания<br><span class="stub">уточняем</span></span></div></div>
+    <div class="rev rv"><div class="q" aria-hidden="true">“</div><p>Здесь будет отзыв. Попросим у&nbsp;клиента.</p><div class="by"><div class="ava"></div><span>Имя, должность, компания<br><span class="stub">уточняем</span></span></div></div>
+  </div>
+</div></section>
+
+<!-- 6. Под ключ -->
+<section class="sec tint-sun" id="turnkey"><div class="wrap turnkey">
+  <div class="tk-pic rv"><img src="https://static.tildacdn.com/tild6430-3134-4263-b237-633137616262/fest-rig.jpg" alt="Сцена со светом и звуком от «Спектра»" loading="lazy"></div>
+  <div class="rv">
+    <h2>Всё под ключ</h2>
+    <div class="tk-sum">
+      <div><b>Театр</b><span class="muted">артисты и&nbsp;программа</span></div>
+      <div class="plus" aria-hidden="true">+</div>
+      <div><b>«Спектр»</b><span class="muted">сцена, звук, свет, экраны</span></div>
+    </div>
+    <p class="tk-res">Один подрядчик на&nbsp;весь праздник</p>
+  </div>
+</div></section>
+
+<!-- 7. Финал -->
+<section class="final" id="order"><div class="wrap">
+  <div class="final-box rv">
+    <div>
+      <h2>Посчитаем праздник за&nbsp;15&nbsp;минут</h2>
+      <p>Расскажите про дату, место и&nbsp;гостей. Предложим программу и&nbsp;пришлём смету.</p>
+      <div class="final-ppl" aria-hidden="true">
+        <img src="img-hosts/bykov-1.jpg" alt=""><img src="img-hosts/fortovaya.jpg" alt=""><img src="img-hosts/gavrilov.jpg" alt="">
+      </div>
+    </div>
+    <div class="final-act">
+      <a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету</a>
+      <p class="muted" style="text-align:center;font-size:.92rem;margin-top:4px">Проверить дату в&nbsp;мессенджере</p>
+      <div class="msgs">
+        <a class="btn btn-line" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn btn-line" href="https://web.max.ru/263464272" target="_blank" rel="noopener">MAX</a>
+      </div>
+      <a class="tel-big" href="tel:+79778100802"><span class="num">+7 (977) 810-08-02</span><span>или позвоните</span></a>
+    </div>
+  </div>
+</div></section>
+
+</main>
+
+<footer class="ftr"><div class="wrap">
+  <div class="top">
+    <div><a class="logo" href="/" aria-label="Спектр, на главную"><img src="https://static.tildacdn.com/tild6533-6336-4664-b938-383830333161/logo-white-crop.png" alt="" width="118" height="28"></a><p style="max-width:40ch">Техническое обеспечение мероприятий. Москва и&nbsp;Московская область.</p></div>
+    <nav aria-label="Навигация в подвале"><a href="/#services">Услуги</a><a href="/#cases">Кейсы</a><a href="/#agency">Агентствам</a></nav>
+  </div>
+  <div class="req"><span>ИП Осташева А.&nbsp;А. · ИНН 770704870004</span><span>Работаем по&nbsp;44-ФЗ и&nbsp;223-ФЗ</span></div>
+  <div class="legal"><a href="/privacy">Политика обработки персональных данных</a><span>© 2026 «Спектр»</span></div>
+</div></footer>
+
+<div class="mbar" aria-label="Быстрая связь">
+  <a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету</a>
+  <a class="circ" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
+  <a class="circ" href="https://web.max.ru/263464272" target="_blank" rel="noopener" aria-label="MAX">MAX</a>
+</div>
+
+<script>
+/* появление блоков при прокрутке; без слушателя scroll */
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>

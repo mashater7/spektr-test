@@ -171,6 +171,7 @@ body.lock{overflow:hidden}
 .reel.paused .track{animation-play-state:paused}
 @keyframes reel{to{transform:translate3d(calc(-50% - var(--card-gap) / 2),0,0)}}
 .card{flex:none;width:var(--card-w);height:var(--card-h);margin:0;background:var(--bg-2)}
+.card.w{width:calc(var(--card-h) * 1.5)}
 .card img{width:100%;height:100%;object-fit:cover}
 .mask{position:absolute;left:0;width:100%;height:56px;pointer-events:none;z-index:2;fill:var(--bg)}
 .mask.t{top:0}
@@ -297,6 +298,7 @@ body.lock{overflow:hidden}
 .stats dt{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--fg-2);margin-top:8px;max-width:16ch}
 .rep{margin-top:44px;border:1px solid var(--line);padding:24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .rep .h3{font-size:18px;margin-bottom:12px}
+.credit{margin:16px 0 0;font-size:12px;color:var(--fg-2)}
 .rep p{margin:12px 0 0;color:var(--fg-2);font-size:14px;max-width:62ch}
 
 /* отзывы — заглушки */
@@ -452,7 +454,7 @@ body.lock{overflow:hidden}
     </div>
     <ul class="fmt snap" role="list">
       <li class="rv">
-        <div class="pic"><img src="https://static.tildacdn.com/tild3931-3433-4830-a564-623463633835/fest-stage-1160.webp" alt="Спектакль на сцене Летнего театра в Пушкино" width="1160" height="870" loading="lazy" decoding="async"></div>
+        <div class="pic"><img src="img-fest/fest-442864.webp" alt="Комедийная сцена спектакля на Пушкинском театральном фестивале" width="1400" height="933" loading="lazy" decoding="async"></div>
         <span class="nn" aria-hidden="true">01</span>
         <h3 class="h3">Спектакль</h3>
         <p>Полноценный спектакль театра: детский, взрослый или&nbsp;вечерний. Приезжают все артисты, занятые в&nbsp;спектакле.</p>
@@ -565,7 +567,7 @@ body.lock{overflow:hidden}
     </div>
     <div class="wide rv">
       <svg class="mask t" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V4Q50 96 0 4Z"/></svg>
-      <img src="https://static.tildacdn.com/tild3931-3433-4830-a564-623463633835/fest-stage-1160.webp" alt="Пушкинский театральный фестиваль, сцена Летнего театра" width="1160" height="870" loading="lazy" decoding="async">
+      <img src="img-fest/fest-442824.webp" alt="Пушкинский театральный фестиваль, сцена Летнего театра и зрители" width="1400" height="931" loading="lazy" decoding="async">
       <svg class="mask b" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V4Q50 96 0 4Z"/></svg>
     </div>
     <div class="fest">
@@ -584,6 +586,7 @@ body.lock{overflow:hidden}
       </div>
       <a class="go" href="https://teatrpushkino.ru/tags/afisha" target="_blank" rel="noopener">Афиша театра →</a>
     </div>
+    <p class="credit">Фото фестиваля: Медиасток.рф</p>
   </div>
 </section>
 
@@ -641,16 +644,18 @@ body.lock{overflow:hidden}
 
   /* лента первого экрана: 7 настоящих фото, набор повторяем дважды для бесшовной петли */
   var photos=[
-    ['img-hosts/bykov-1.jpg'],
-    ['img-hosts/fortovaya.jpg'],
-    ['img-hosts/gavrilov.jpg'],
-    ['img-hosts/bykov-stage.jpg'],
-    ['https://static.tildacdn.com/tild3861-3966-4637-b666-656135373935/fest-rig-504.webp'],
-    ['img-hosts/bykov-2.jpg']
+    ['img-fest/fest-442824.webp','w'],
+    ['img-fest/fest-442822.webp'],
+    ['img-fest/fest-442870.webp','w'],
+    ['img-fest/fest-442845.webp'],
+    ['img-fest/fest-442825.webp','w'],
+    ['img-fest/fest-442827.webp'],
+    ['img-fest/fest-442841.webp','w'],
+    ['img-fest/fest-442868.webp']
   ];
   var track=document.getElementById('track'), html='';
   for(var k=0;k<2;k++)photos.forEach(function(p,i){
-    html+='<figure class="card"><img src="'+p[0]+'" alt="" decoding="async"'+(k===0&&i<4?' fetchpriority="high"':' loading="lazy"')+'></figure>';
+    html+='<figure class="card'+(p[1]?' w':'')+'"><img src="'+p[0]+'" alt="" decoding="async"'+(k===0&&i<4?(i<2?' fetchpriority="high"':''):' loading="lazy"')+'></figure>';
   });
   track.innerHTML=html;
   function setDur(){ /* ~60 px/с, как у референса */

@@ -390,7 +390,85 @@ body.lock{overflow:hidden}
   .intro-ov .stripes i{width:17%}
   .intro-ov .stripes i:nth-child(n+6){display:none}
 }
-@media (max-width:760px) and (max-height:700px){:root{--card-h:150px;--card-w:100px}}
+/* ---------- телефон: компактная раскладка (правка 21.10) ---------- */
+@media (max-width:760px){
+  /* первый экран целиком в 654: заголовок 3 строки, лента крупнее, подзаголовок строчными */
+  :root{--card-h:clamp(170px,30svh,260px);--card-w:calc(var(--card-h) * .64);--card-gap:12px}
+  .card.w{width:calc(var(--card-h) * 1.3)}
+  .hero{min-height:calc(100svh - 60px);padding:16px 0 28px;justify-content:center}
+  .h1{font-size:clamp(23px,7.4vw,30px);line-height:1.08;padding:0 16px;margin:0}
+  .h1 span{display:inline}
+  .reel{margin-top:10px}
+  .reel-win{padding:12px 0;height:calc(var(--card-h) + 24px)}
+  .mask{height:34px}
+  .reel-win::before,.reel-win::after{width:8%}
+  .hero-lead{font-size:15px;line-height:1.45;text-transform:none;margin-top:12px;padding:0 20px;max-width:400px;color:var(--fg)}
+  .hero-cta{margin-top:16px;gap:12px 18px;padding:0 16px}
+  .vf{inset:10px}
+  .vf i{width:44px;height:24px}
+
+  /* секции плотнее */
+  .sec{padding:56px 0}
+  .head-row{gap:12px}
+  .lead{font-size:15px;margin-top:12px}
+
+  /* форматы: лента со свайпом, фото ниже */
+  .fmt{margin-top:24px}
+  .snap{grid-auto-columns:76%}
+  .fmt .pic{aspect-ratio:16/11}
+  .fmt>li{padding:12px 12px 16px;gap:10px}
+  .fmt p{font-size:14px}
+
+  /* кто приедет: заявление мельче, ведущие лентой 62% */
+  .say{font-size:clamp(20px,6vw,24px)}
+  .say-by{font-size:12px;margin-top:14px}
+  .hosts{margin-top:32px;grid-auto-columns:62%}
+  .hosts .pic{aspect-ratio:4/5}
+  .hosts .h3{font-size:18px}
+  .hosts p{font-size:14px}
+  .hosts .reg{font-size:12px}
+
+  /* как это работает: фото широкое, шаги сеткой 2×2 */
+  .how{margin-top:24px;gap:20px}
+  .how .pic{aspect-ratio:16/9}
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:20px 14px}
+  .steps h3{font-size:13px}
+  .steps p{font-size:14px;line-height:1.45}
+  .note{margin-top:24px;padding-top:16px}
+  .note b{font-size:16px}
+  .note p{font-size:14px}
+
+  /* кейс: две заглушки в ряд */
+  .case{gap:20px}
+  .flow{grid-template-columns:1fr 1fr;gap:12px}
+  .flow .framed{aspect-ratio:3/4}
+  .flow .ph{font-size:12px;padding:10px;min-height:0}
+  .flow b{font-size:12px}
+
+  /* фестиваль */
+  .wide{aspect-ratio:16/10;margin-top:24px}
+  .fest{margin-top:24px;gap:24px}
+  .stats dd{font-size:32px}
+  .rep{margin-top:24px;padding:16px}
+  .rep .h3{font-size:16px}
+
+  /* отзывы: лента, ниже */
+  .revs{margin-top:24px}
+  .revs li{min-height:150px;padding:18px}
+  .revs q{font-size:16px}
+
+  /* финал: мессенджеры в ряд */
+  .fin-acts .btn{min-height:56px}
+  .fin-acts .two{grid-template-columns:1fr 1fr;gap:10px}
+  .fin-acts .two .btn{min-height:56px;font-size:12px;line-height:1.2;white-space:normal;text-align:center;padding:0 10px}
+
+  /* подвал */
+  .ftr{padding:32px 0 96px}
+  .ftr .top{gap:16px}
+  .ftr nav{gap:20px}
+  .ftr .soc{margin-top:16px}
+  .ftr .req,.ftr .legal{margin-top:12px;font-size:13px}
+}
 @media (min-width:761px) and (max-height:820px){:root{--card-h:min(330px,36vh);--card-w:calc(var(--card-h) * .667)}}
 
 /* ---------- меньше движения ---------- */
@@ -424,7 +502,7 @@ body.lock{overflow:hidden}
 <section class="hero" aria-labelledby="h1">
   <div class="glow" aria-hidden="true"></div>
   <div class="vf" aria-hidden="true"><i></i><i></i></div>
-  <h1 class="h1" id="h1"><span>Спектакль или&nbsp;анимация</span><span>на&nbsp;ваше мероприятие</span></h1>
+  <h1 class="h1" id="h1"><span>Спектакль или&nbsp;анимация</span> <span>на&nbsp;ваше мероприятие</span></h1>
 
   <div class="reel" id="reel" aria-hidden="true">
     <div class="reel-win">

@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="ru">
+<head><meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Спектакль или анимация на ваше мероприятие — «Спектр» и Пушкинский театр</title>
+<meta name="description" content="Артисты Пушкинского музыкально-драматического театра, а сцена и техника — от «Спектра». Мероприятие под ключ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400..700&family=Tektur:wdth,wght@75..100,500..900&display=swap" rel="stylesheet">
+<script>
+/* Интро показываем один раз за сессию и только если человек не просил «меньше движения» */
+(function(){try{
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen=false; try{seen=sessionStorage.getItem('dg-intro')==='1';}catch(e){}
+  if(!rm&&!seen){document.documentElement.classList.add('intro');try{sessionStorage.setItem('dg-intro','1');}catch(e){}}
+}catch(e){}})();
+</script>
+<style>
+:root{
+  --bg:#09080A;
+  --bg-2:#111013;
+  --fg:#F8F3F3;
+  --fg-2:#BBBABB;
+  --line:rgba(248,243,243,.16);
+  --line-2:rgba(248,243,243,.45);
+  --red:#FF4122;
+  --red-t:#FF5A3C;
+  --on-red:#0A0A0B;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-io:cubic-bezier(.77,0,.175,1);
+  --wrap:1180px;
+  --gut:clamp(16px,4vw,56px);
+  --card-w:220px; --card-h:330px; --card-gap:44px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 Onest,system-ui,sans-serif;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--fg);color:var(--bg);padding:8px 12px}
+.skip:focus{left:8px}
+.wrap{width:100%;max-width:calc(var(--wrap) + var(--gut)*2);margin:0 auto;padding:0 var(--gut)}
+.up{text-transform:uppercase}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* зерно, как у референса: статичное, без анимации */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -0.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- кнопки ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:100px;border:0;
+  font:600 15px/1 Onest,sans-serif;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;cursor:pointer;
+  transition:transform 160ms var(--ease-out),background-color 200ms ease,color 200ms ease,border-color 200ms ease}
+.btn:active{transform:scale(.97)}
+.btn-red{background:var(--red);color:var(--on-red)}
+.btn-line{background:transparent;color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-2)}
+.btn-light{background:var(--fg);color:var(--bg)}
+@media (hover:hover) and (pointer:fine){
+  .btn-red:hover{background:var(--red-t)}
+  .btn-line:hover{box-shadow:inset 0 0 0 1px var(--fg)}
+  .btn-light:hover{background:#fff}
+}
+.go{display:inline-flex;align-items:center;gap:8px;font:500 14px/1.2 Onest,sans-serif;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line-2);padding:6px 0;transition:border-color 200ms ease}
+@media (hover:hover) and (pointer:fine){.go:hover{border-color:var(--red)}}
+
+/* ---------- шапка (как у референса: прозрачная, пункты на всю ширину) ---------- */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background-color 300ms ease}
+.hdr.solid{background:rgba(9,8,10,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hdr .bar{display:flex;align-items:center;justify-content:space-between;height:84px;padding:0 52px}
+.logo img{height:30px;width:auto}
+.nav{display:flex;justify-content:space-around;flex:1;max-width:760px;margin:0 32px}
+.nav a,.hdr-cta{font:400 14px/1.4 Onest,sans-serif;text-transform:uppercase;text-decoration:none;color:var(--fg);padding:6px 4px}
+.hdr-cta{display:inline-flex;align-items:center;gap:10px;position:relative;padding:12px 18px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
+.hdr-cta .dot{animation:rec 1.6s steps(1) infinite}
+@keyframes rec{50%{opacity:.25}}
+.hdr-cta::before,.hdr-cta::after{content:"";position:absolute;width:12px;height:12px;border:1px solid var(--line-2)}
+.hdr-cta::before{left:0;top:0;border-right:0;border-bottom:0}
+.hdr-cta::after{right:0;bottom:0;border-left:0;border-top:0}
+@media (hover:hover) and (pointer:fine){.nav a:hover,.hdr-cta:hover{color:#fff;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--red)}}
+.burger{display:none;align-items:center;gap:10px;background:none;border:0;color:var(--fg);font:500 14px/1 Onest,sans-serif;text-transform:uppercase;min-height:44px;padding:0 4px;cursor:pointer}
+.burger svg{width:20px;height:20px}
+
+.mmenu{position:fixed;inset:0;z-index:80;background:var(--bg);padding:20px 16px 32px;display:flex;flex-direction:column;gap:28px;
+  opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity 220ms var(--ease-out),transform 220ms var(--ease-out),visibility 0s 220ms}
+.mmenu.open{opacity:1;visibility:visible;transform:none;transition:opacity 220ms var(--ease-out),transform 220ms var(--ease-out)}
+.mmenu .top{display:flex;justify-content:space-between;align-items:center}
+.mmenu nav{display:flex;flex-direction:column}
+.mmenu nav a{font:800 28px/1.2 Tektur,sans-serif;text-transform:uppercase;text-decoration:none;padding:10px 0;border-bottom:1px solid var(--line)}
+.mmenu .contacts{display:flex;flex-direction:column;gap:12px;margin-top:auto}
+.mmenu .bigtel{font:700 22px/1.2 Tektur,sans-serif;text-decoration:none}
+.mmenu .msg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* фиксированные «уголки» экрана: слева мессенджеры, справа телефон (у референса EN/UA и таймкод) */
+.corner{position:fixed;bottom:44px;z-index:40;display:flex;gap:16px;font:400 14px/1.4 Onest,sans-serif;text-transform:uppercase}
+.corner a{text-decoration:none;color:var(--fg);padding:4px 0}
+.corner a+a{color:var(--fg-2)}
+.corner.l{left:52px}
+.corner.r{right:52px}
+@media (hover:hover) and (pointer:fine){.corner a:hover{color:#fff;text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:5px}}
+
+/* ---------- первый экран ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:104px 0 112px;overflow:hidden;isolation:isolate}
+/* красное свечение по бокам — свет рампы */
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 70% at 50% 50%,transparent 55%,rgba(0,0,0,.65))}
+/* красное свечение поверх ленты, как картинка-тень у референса */
+.glow{position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(90deg,rgba(255,65,34,.42),rgba(255,65,34,.13) 4%,rgba(255,65,34,0) 10%,rgba(255,65,34,0) 90%,rgba(255,65,34,.13) 96%,rgba(255,65,34,.42))}
+/* уголки видоискателя */
+.vf{position:absolute;inset:20px;pointer-events:none;z-index:2}
+.vf i{position:absolute;width:168px;height:70px;border:1px solid var(--line-2)}
+.vf i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}
+.vf i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}
+.vf i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}
+.vf i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
+
+.h1{margin:0;padding:0 24px;text-align:center;position:relative;z-index:3;
+  font:800 clamp(30px,5.5vw,84px)/1.06 Tektur,sans-serif;font-stretch:100%;text-transform:uppercase;letter-spacing:0;
+  background:linear-gradient(202deg,#fff 31%,#9a8f8c 82%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  text-wrap:balance}
+.h1 span{display:block}
+
+/* лента фото: плоская, «изгиб барабана» рисуют маски сверху и снизу — приём референса */
+.reel{position:relative;width:100%;margin-top:calc(var(--card-h) * -.08);z-index:1}
+.reel-win{position:relative;overflow:hidden;height:calc(var(--card-h) + 40px);padding:20px 0}
+.track{display:flex;gap:var(--card-gap);width:max-content;animation:reel var(--reel-dur,31s) linear infinite}
+.reel.paused .track{animation-play-state:paused}
+@keyframes reel{to{transform:translate3d(calc(-50% - var(--card-gap) / 2),0,0)}}
+.card{flex:none;width:var(--card-w);height:var(--card-h);margin:0;background:var(--bg-2)}
+.card img{width:100%;height:100%;object-fit:cover}
+.mask{position:absolute;left:0;width:100%;height:56px;pointer-events:none;z-index:2;fill:var(--bg)}
+.mask.t{top:0}
+.mask.b{bottom:0;transform:scaleY(-1)}
+.reel-win::before,.reel-win::after{content:"";position:absolute;top:0;bottom:0;width:12%;z-index:2;pointer-events:none}
+.reel-win::before{left:0;background:linear-gradient(90deg,var(--bg),rgba(9,8,10,0))}
+.reel-win::after{right:0;background:linear-gradient(-90deg,var(--bg),rgba(9,8,10,0))}
+
+.hero-lead{max-width:430px;margin:20px auto 0;padding:0 24px;text-align:center;font:400 15px/1.4 Onest,sans-serif;text-transform:uppercase;position:relative;z-index:3}
+.hero-cta{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:22px;flex-wrap:wrap;padding:0 16px;position:relative;z-index:3}
+.hero-msg{display:none}
+.hero-foot{position:absolute;left:0;right:0;bottom:44px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3;
+  font:400 12px/1.4 Onest,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--fg)}
+.hero-foot::after{content:"";width:1px;height:14px;background:var(--fg)}
+
+/* ---------- интро: рамка + красные полосы, ~1.1 с, один раз ---------- */
+.intro-ov{display:none}
+.intro .intro-ov{display:block;position:fixed;inset:0;z-index:95;pointer-events:none}
+.intro-ov .shade{position:absolute;inset:0;background:var(--bg);animation:shade 1100ms linear forwards}
+.intro-ov .fr{position:absolute;left:50%;top:50%;width:120px;height:62px;transform:translate(-50%,-50%);animation:shade 1100ms linear forwards}
+.intro-ov .fr::before,.intro-ov .fr::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--fg)}
+.intro-ov .fr::before{left:0;top:0;border-right:0;border-bottom:0}
+.intro-ov .fr::after{right:0;bottom:0;border-left:0;border-top:0}
+.intro-ov .fr .dot{position:absolute;right:-6px;top:-6px}
+.intro-ov .stripes{position:absolute;inset:0;display:flex;justify-content:space-between}
+.intro-ov .stripes i{width:9.5%;height:100%;background:var(--red);transform:scaleY(0);transform-origin:50% 0;
+  animation:stripe 900ms var(--ease-io) forwards;animation-delay:calc(260ms + var(--i) * 35ms)}
+@keyframes shade{0%,52%{opacity:1}53%,100%{opacity:0}}
+@keyframes stripe{0%{transform:scaleY(0);transform-origin:50% 0}45%{transform:scaleY(1);transform-origin:50% 0}55%{transform:scaleY(1);transform-origin:50% 100%}100%{transform:scaleY(0);transform-origin:50% 100%}}
+.intro .h1{animation:rise 800ms var(--ease-out) 700ms both}
+.intro .reel{animation:fadein 900ms var(--ease-out) 820ms both}
+.intro .hero-lead,.intro .hero-cta,.intro .hero-foot{animation:fadein 700ms var(--ease-out) 1000ms both}
+.intro .hdr{animation:fadein 600ms ease 900ms both}
+@keyframes rise{from{opacity:0;transform:translate3d(0,28px,0)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+
+/* ---------- секции ---------- */
+.sec{padding:clamp(80px,11vw,150px) 0;position:relative}
+.k{display:block;margin:0 0 14px;font:400 12px/1.4 Onest,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--fg)}
+.h2{margin:0;font:800 clamp(28px,4.4vw,64px)/1.1 Tektur,sans-serif;text-transform:uppercase;
+  background:linear-gradient(117deg,#fff 32%,#9a8f8c 93%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 8px rgba(255,255,255,.22));text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}
+.h3{margin:0;font:700 22px/1.3 Tektur,sans-serif;color:var(--fg)}
+.lead{color:var(--fg-2);max-width:56ch;margin:20px 0 0;font-size:16px}
+.small{font-size:14px}
+.muted{color:var(--fg-2)}
+.head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.head-row .lead{max-width:36ch;margin:0;text-transform:uppercase;font-size:14px;color:var(--fg)}
+
+/* фото в уголках-рамке */
+.framed{position:relative;padding:10px}
+.framed::before,.framed::after{content:"";position:absolute;width:18px;height:18px;border:1px solid var(--line-2);pointer-events:none}
+.framed::before{left:0;top:0;border-right:0;border-bottom:0}
+.framed::after{right:0;bottom:0;border-left:0;border-top:0}
+.ph{display:flex;align-items:flex-end;padding:16px;min-height:180px;height:100%;
+  background:repeating-linear-gradient(-45deg,rgba(248,243,243,.04) 0 12px,transparent 12px 24px),var(--bg-2);
+  border:1px dashed rgba(248,243,243,.25);color:var(--fg-2);font-size:13px;line-height:1.4}
+.ph::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);margin:0 10px 5px 0;flex:none}
+
+/* форматы: карточки-рамки как «услуги» у референса */
+.fmt{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fmt>li{border:1px solid var(--line);padding:16px 16px 22px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color 250ms ease}
+@media (hover:hover) and (pointer:fine){.fmt>li:hover{border-color:var(--line-2)}}
+.fmt .pic{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--bg-2)}
+.fmt .pic img{width:100%;height:100%;object-fit:cover}
+.fmt .pic .ph{position:absolute;inset:0;min-height:0}
+.num{display:inline-grid;place-items:center;width:36px;height:36px;background:var(--red);color:var(--on-red);font:700 13px/1 Tektur,sans-serif}
+.fmt p{margin:0;color:var(--fg-2);font-size:15px}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.tags li{font-size:12px;text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--line);padding:5px 9px}
+.meta{margin-top:auto !important;font-size:12px !important;text-transform:uppercase;letter-spacing:.03em;color:var(--fg-2)}
+
+/* заявление по центру с красными словами и фото-вставками */
+.stmt{text-align:center}
+.stmt .k{text-align:center}
+.say{margin:0 auto;max-width:1100px;font:800 clamp(26px,3.9vw,56px)/1.22 Tektur,sans-serif;text-transform:uppercase;color:var(--fg);
+  text-shadow:0 0 12px rgba(255,255,255,.25)}
+.say em{font-style:normal;color:var(--red);text-shadow:0 0 14px rgba(255,65,34,.35)}
+.say .chip{display:inline-block;vertical-align:middle;width:2.2em;height:1em;margin:0 .12em;overflow:hidden;position:relative;top:-.06em}
+.say .chip img{width:100%;height:100%;object-fit:cover}
+.say-by{margin:22px 0 0;color:var(--fg-2);font-size:14px;text-transform:uppercase;letter-spacing:.03em}
+
+.hosts{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
+.hosts li{display:flex;flex-direction:column;gap:14px}
+.hosts .pic{aspect-ratio:3/4;overflow:hidden;background:var(--bg-2)}
+.hosts .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.hosts .h3{font-size:24px}
+.hosts p{margin:0;color:var(--fg-2);font-size:15px}
+.hosts .reg{color:var(--fg);text-transform:uppercase;font-size:13px;letter-spacing:.03em}
+
+/* как это работает: фото слева, 01–04 справа (как «We embody art in visuals») */
+.how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);margin-top:56px;align-items:start}
+.how .pic{aspect-ratio:4/3;overflow:hidden}
+.how .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:30px;counter-reset:s}
+.steps li{counter-increment:s}
+.steps li::before{content:"0" counter(s);display:block;color:var(--red);font:700 13px/1 Tektur,sans-serif;margin-bottom:8px}
+.steps h3{margin:0 0 6px;font:500 15px/1.4 Onest,sans-serif;text-transform:uppercase}
+.steps p{margin:0;color:var(--fg-2);font-size:15px;max-width:44ch}
+.note{margin-top:40px;border-top:1px solid var(--line);padding-top:20px}
+.note b{display:block;font:700 18px/1.3 Tektur,sans-serif;margin-bottom:6px}
+.note p{margin:0;color:var(--fg-2);font-size:15px}
+
+/* кейс */
+.case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,80px);align-items:end}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.flow li{display:flex;flex-direction:column;gap:12px}
+.flow .framed{aspect-ratio:4/3}
+.flow b{font:500 14px/1.4 Onest,sans-serif;text-transform:uppercase}
+.flow b i{font-style:normal;color:var(--red);font-family:Tektur,sans-serif;margin-right:8px}
+
+/* фестиваль: широкое фото с той же «барабанной» маской */
+.wide{position:relative;margin-top:44px;overflow:hidden;aspect-ratio:16/7;background:var(--bg-2)}
+.wide img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.wide .mask{height:12%}
+.wide::before,.wide::after{content:"";position:absolute;top:0;bottom:0;width:7%;z-index:2}
+.wide::before{left:0;background:linear-gradient(90deg,var(--bg),rgba(9,8,10,0))}
+.wide::after{right:0;background:linear-gradient(-90deg,var(--bg),rgba(9,8,10,0))}
+.fest{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);margin-top:48px;align-items:start}
+.stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 40px;margin:0}
+.stats div{display:flex;flex-direction:column}
+.stats dd{order:-1}
+.stats dd{margin:0;font:800 clamp(40px,5vw,72px)/1 Tektur,sans-serif;background:linear-gradient(160deg,#fff 30%,#9a8f8c 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats dt{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--fg-2);margin-top:8px;max-width:16ch}
+.rep{margin-top:44px;border:1px solid var(--line);padding:24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.rep .h3{font-size:18px;margin-bottom:12px}
+.rep p{margin:12px 0 0;color:var(--fg-2);font-size:14px;max-width:62ch}
+
+/* отзывы — заглушки */
+.revs{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.revs li{border:1px dashed rgba(248,243,243,.25);padding:24px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.revs q{quotes:none;font:700 18px/1.35 Tektur,sans-serif;color:var(--fg-2)}
+.revs span{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--fg-2)}
+
+/* финал (как «Drop us a line») */
+.final{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.acts{display:flex;flex-direction:column;gap:12px}
+.acts .btn{width:100%;min-height:64px;font-size:16px}
+.acts .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.acts .two .btn{min-height:52px;font-size:13px;padding:0 14px}
+.acts .tel{margin:10px 0 0;font-size:14px;color:var(--fg-2);text-transform:uppercase}
+.acts .tel a{font:700 22px/1.3 Tektur,sans-serif;color:var(--fg);text-decoration:none;display:block;margin-top:4px;text-transform:none}
+
+/* подвал */
+.ftr{border-top:1px solid var(--line);padding:48px 0 120px;font-size:14px;color:var(--fg-2)}
+.ftr .top{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.ftr .top img{height:28px;width:auto;margin-bottom:14px}
+.ftr p{margin:0}
+.ftr nav{display:flex;gap:28px;flex-wrap:wrap}
+.ftr nav a,.ftr .soc a{text-transform:uppercase;text-decoration:none;color:var(--fg);padding:6px 0}
+.ftr .soc{display:flex;gap:24px;margin-top:28px}
+.ftr .soc a{color:var(--red);font:700 13px/1 Tektur,sans-serif;letter-spacing:.04em}
+.ftr .req,.ftr .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:20px}
+.ftr .tbd{border-bottom:1px dashed var(--line-2)}
+
+/* мобильная панель связи */
+.mbar{display:none}
+
+/* появление при прокрутке */
+.rv{opacity:0;transform:translate3d(0,18px,0);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv{opacity:1;transform:none}
+
+/* ---------- планшет ---------- */
+@media (max-width:1100px){
+  .nav{display:none}
+  .fmt{grid-template-columns:repeat(2,1fr)}
+}
+/* ---------- телефон ---------- */
+@media (max-width:760px){
+  :root{--card-w:150px;--card-h:225px;--card-gap:18px}
+  .hdr .bar{height:68px;padding:0 30px}
+  .logo img{height:24px}
+  .hdr-cta{display:none}
+  .burger{display:inline-flex}
+  .corner{display:none}
+  .vf{inset:12px}
+  .vf i{width:72px;height:44px}
+  .hero{padding:84px 0 72px;justify-content:center}
+  .h1{padding:0 28px;margin-top:4px}
+  .reel{margin-top:6px}
+  .reel-win{padding:14px 0;height:calc(var(--card-h) + 28px)}
+  .mask{height:30px}
+  .hero-lead{font-size:14px;margin-top:14px;padding:0 28px}
+  .hero-cta{margin-top:18px;gap:14px 20px;padding:0 28px}
+  .hero-cta .btn{width:100%}
+  .hero-msg{display:flex;gap:10px}
+  .hero-msg a{display:inline-grid;place-items:center;min-width:44px;height:44px;padding:0 12px;border-radius:100px;box-shadow:inset 0 0 0 1px var(--line-2);text-decoration:none;font:600 12px/1 Onest,sans-serif;text-transform:uppercase}
+  .hero-foot{display:none}
+
+  .sec{padding:72px 0}
+  .head-row{flex-direction:column;align-items:flex-start;gap:16px}
+  /* карточки — нативный свайп со scroll-snap */
+  .snap{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:80%;gap:12px;overflow-x:auto;
+    scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin-left:calc(var(--gut) * -1);margin-right:calc(var(--gut) * -1);
+    padding:0 var(--gut) 8px;scroll-padding:0 var(--gut);scrollbar-width:none}
+  .snap::-webkit-scrollbar{display:none}
+  .snap>li{scroll-snap-align:start}
+  .fmt{margin-top:32px}
+  .hosts{margin-top:44px;gap:12px}
+  .hosts .h3{font-size:20px}
+  .how,.case,.fest,.final{grid-template-columns:1fr}
+  .how{margin-top:36px}
+  .flow{grid-template-columns:1fr;gap:20px}
+  .wide{aspect-ratio:4/3;margin-top:32px}
+  .wide .mask{height:9%}
+  .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px}
+  .stats dd{font-size:36px}
+  .rep{padding:18px}
+  .revs{margin-top:32px}
+  .acts .two{grid-template-columns:1fr}
+  .ftr{padding-bottom:110px}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(9,8,10,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);
+    transform:translateY(110%);transition:transform 300ms var(--ease-out)}
+  .mbar.show{transform:none}
+  .mbar .btn{flex:1;min-height:48px;padding:0 16px}
+  .mbar .circ{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:0 10px;border-radius:100px;box-shadow:inset 0 0 0 1px var(--line-2);text-decoration:none;font:600 12px/1 Onest,sans-serif;text-transform:uppercase}
+  .intro-ov .stripes i{width:17%}
+  .intro-ov .stripes i:nth-child(n+6){display:none}
+}
+@media (max-width:760px) and (max-height:700px){:root{--card-h:150px;--card-w:100px}}
+@media (min-width:761px) and (max-height:820px){:root{--card-h:min(330px,36vh);--card-w:calc(var(--card-h) * .667)}}
+
+/* ---------- меньше движения ---------- */
+@media (prefers-reduced-motion:reduce){
+  .track{animation:none}
+  .reel-win{overflow-x:auto;scrollbar-width:none}
+  .hdr-cta .dot{animation:none}
+  .rv{transform:none;transition:opacity 300ms ease}
+  .btn:active{transform:none}
+  .mmenu,.mmenu.open{transform:none}
+  .mbar{transition:none}
+}
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+<a class="skip" href="#main">К&nbsp;содержанию</a>
+
+<div class="intro-ov" aria-hidden="true">
+  <div class="shade"></div>
+  <div class="fr"><span class="dot"></span></div>
+  <div class="stripes"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i></div>
+</div>
+
+<header class="hdr" id="hdr">
+  <div class="bar">
+    <a class="logo" href="/" aria-label="Спектр — на главную"><img src="https://static.tildacdn.com/tild6533-6336-4664-b938-383830333161/logo-white-crop.png" alt="" width="126" height="30" srcset="https://static.tildacdn.com/tild3231-6661-4234-a461-616431636665/logo-white-crop-260.webp 260w, https://static.tildacdn.com/tild6533-6336-4664-b938-383830333161/logo-white-crop.png 840w" sizes="126px"></a>
+    <nav class="nav" aria-label="Главное меню"><a href="/#services">Услуги</a><a href="/#cases">Кейсы</a><a href="/#agency">Агентствам</a><a href="tel:+79778100802">+7 (977) 810-08-02</a></nav>
+    <a class="hdr-cta" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC"><span class="dot" aria-hidden="true"></span>Посчитать смету</a>
+    <button class="burger js-burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mmenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Меню</button>
+  </div>
+</header>
+
+<div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Меню">
+  <div class="top"><img src="https://static.tildacdn.com/tild6533-6336-4664-b938-383830333161/logo-white-crop.png" alt="" width="110" height="26" style="height:22px;width:auto"><button class="burger js-mclose" type="button" aria-label="Закрыть меню" style="display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <nav aria-label="Меню"><a href="/#services">Услуги</a><a href="/#cases">Кейсы</a><a href="/#agency">Агентствам</a></nav>
+  <div class="contacts">
+    <a class="bigtel" href="tel:+79778100802">+7 (977) 810-08-02</a>
+    <span class="muted small">Позвоните: посчитаем за&nbsp;15&nbsp;минут</span>
+    <div class="msg"><a class="btn btn-line" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener">Telegram</a><a class="btn btn-line" href="https://web.max.ru/263464272" target="_blank" rel="noopener">MAX</a></div>
+    <a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету</a>
+  </div>
+</div>
+
+<div class="corner l" aria-label="Мессенджеры"><a href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener">Telegram</a><a href="https://web.max.ru/263464272" target="_blank" rel="noopener">MAX</a></div>
+<div class="corner r"><a href="tel:+79778100802">+7 (977) 810-08-02</a></div>
+
+<section class="hero" aria-labelledby="h1">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <h1 class="h1" id="h1"><span>Спектакль или&nbsp;анимация</span><span>на&nbsp;ваше мероприятие</span></h1>
+
+  <div class="reel" id="reel" aria-hidden="true">
+    <div class="reel-win">
+      <svg class="mask t" viewBox="0 0 100 56" preserveAspectRatio="none"><path d="M0 0H100V4Q50 96 0 4Z"/></svg>
+      <div class="track" id="track"></div>
+      <svg class="mask b" viewBox="0 0 100 56" preserveAspectRatio="none"><path d="M0 0H100V4Q50 96 0 4Z"/></svg>
+    </div>
+  </div>
+
+  <p class="hero-lead">Артисты Пушкинского музыкально-драматического театра, а&nbsp;сцена и&nbsp;техника&nbsp;— от&nbsp;«Спектра». Мероприятие под&nbsp;ключ.</p>
+  <div class="hero-cta">
+    <a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету <span aria-hidden="true">→</span></a>
+    <a class="go" href="https://teatrpushkino.ru/tags/afisha" target="_blank" rel="noopener">Афиша театра →</a>
+    <div class="hero-msg"><a href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener" aria-label="Написать в Telegram">TG</a><a href="https://web.max.ru/263464272" target="_blank" rel="noopener" aria-label="Написать в MAX">MAX</a></div>
+  </div>
+  <p class="hero-foot">Вместе с&nbsp;Пушкинским театром</p>
+</section>
+
+<main id="main">
+
+<!-- 1. Что привозим -->
+<section class="sec" aria-labelledby="fmt-h">
+  <div class="wrap">
+    <div class="head-row rv">
+      <div><span class="k">Что привозим</span><h2 class="h2" id="fmt-h">Четыре формата</h2></div>
+      <p class="lead">Длительность и&nbsp;стоимость уточняем под&nbsp;ваше мероприятие.</p>
+    </div>
+    <ul class="fmt snap" role="list">
+      <li class="rv">
+        <div class="pic"><img src="https://static.tildacdn.com/tild3931-3433-4830-a564-623463633835/fest-stage-1160.webp" alt="Спектакль на сцене Летнего театра в Пушкино" width="1160" height="870" loading="lazy" decoding="async"></div>
+        <span class="num" aria-hidden="true">01</span>
+        <h3 class="h3">Спектакль</h3>
+        <p>Полноценный спектакль театра: детский, взрослый или&nbsp;вечерний. Приезжают все артисты, занятые в&nbsp;спектакле.</p>
+        <ul class="tags"><li>нужна сцена</li><li>нет сцены&nbsp;— поставим подиум</li></ul>
+        <p class="meta">Длительность: уточняем · Цена: уточняем</p>
+      </li>
+      <li class="rv">
+        <div class="pic"><div class="ph">нужно фото: артисты театра проводят анимацию с&nbsp;детьми</div></div>
+        <span class="num" aria-hidden="true">02</span>
+        <h3 class="h3">Анимация для&nbsp;детей</h3>
+        <p>Артисты театра развлекают детей на&nbsp;вашем мероприятии.</p>
+        <ul class="tags"><li>от&nbsp;двух артистов</li></ul>
+        <p class="meta">Длительность: уточняем · Цена: уточняем</p>
+      </li>
+      <li class="rv">
+        <div class="pic"><div class="ph">нужно фото: анимационная программа для&nbsp;взрослых гостей</div></div>
+        <span class="num" aria-hidden="true">03</span>
+        <h3 class="h3">Анимация для&nbsp;взрослых</h3>
+        <p>Анимационная программа для&nbsp;взрослых гостей: на&nbsp;корпоративе или&nbsp;празднике.</p>
+        <ul class="tags"><li>от&nbsp;двух артистов</li></ul>
+        <p class="meta">Длительность: уточняем · Цена: уточняем</p>
+      </li>
+      <li class="rv">
+        <div class="pic"><img src="img-hosts/bykov-stage.jpg" alt="Дмитрий Быков ведёт мероприятие на сцене" width="799" height="1200" loading="lazy" decoding="async"></div>
+        <span class="num" aria-hidden="true">04</span>
+        <h3 class="h3">Ведущий</h3>
+        <p>Ведущий солист театра проведёт ваше мероприятие.</p>
+        <ul class="tags"><li>официальные и&nbsp;праздничные события</li></ul>
+        <p class="meta">Длительность: уточняем · Цена: уточняем</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 2. Кто приедет: заявление + ведущие -->
+<section class="sec stmt" aria-labelledby="who-h">
+  <div class="wrap">
+    <span class="k rv">Кто приедет</span>
+    <h2 class="sr" id="who-h">Кто приедет</h2>
+    <p class="say rv"><em>Заслуженный артист России</em> <span class="chip"><img src="img-hosts/bykov-1.jpg" alt="" loading="lazy"></span> солист Ансамбля Александрова <span class="chip"><img src="img-hosts/bykov-stage.jpg" alt="" loading="lazy"></span> гастроли в&nbsp;<em>56&nbsp;странах</em></p>
+    <p class="say-by rv">Дмитрий Быков, ведущий солист Пушкинского театра</p>
+
+    <!-- Тексты о ведущих временные — ведущие пришлют свои -->
+    <ul class="hosts snap" role="list">
+      <li class="rv">
+        <div class="pic"><img src="img-hosts/bykov-1.jpg" alt="Дмитрий Быков" width="738" height="1200" loading="lazy" decoding="async"></div>
+        <h3 class="h3">Дмитрий Быков</h3>
+        <p class="reg">Заслуженный артист России</p>
+        <p>Ведущий солист Пушкинского музыкально-драматического театра. В&nbsp;1994–2015&nbsp;— солист и&nbsp;ведущий концертных и&nbsp;специальных программ Академического ансамбля песни и&nbsp;пляски им.&nbsp;А.&nbsp;В.&nbsp;Александрова, гастроли в&nbsp;56&nbsp;странах.</p>
+      </li>
+      <li class="rv">
+        <div class="pic"><img src="img-hosts/fortovaya.jpg" alt="Елена Фортовая" width="798" height="1200" loading="lazy" decoding="async"></div>
+        <h3 class="h3">Елена Фортовая</h3>
+        <p class="reg">Солистка группы «Ассорти»</p>
+        <p>Ведущая солистка Пушкинского музыкально-драматического театра.</p>
+      </li>
+      <li class="rv">
+        <div class="pic"><img src="img-hosts/gavrilov.jpg" alt="Сергей Гаврилов" width="900" height="1200" loading="lazy" decoding="async"></div>
+        <h3 class="h3">Сергей Гаврилов</h3>
+        <p class="reg">Ведущий солист театра</p>
+        <p>Ведёт официальные и&nbsp;протокольные мероприятия.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 3. Как это работает -->
+<section class="sec" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="rv"><span class="k">Как это работает</span><h2 class="h2" id="how-h">Одна заявка&nbsp;— программа, сцена и&nbsp;техника</h2></div>
+    <div class="how">
+      <div class="pic framed rv"><img src="https://static.tildacdn.com/tild6430-3134-4263-b237-633137616262/fest-rig.jpg" alt="Техника «Спектра» за сценой Летнего театра" width="960" height="1280" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="rv">
+        <ol class="steps">
+          <li><h3>Заявка в&nbsp;«Спектр»</h3><p>Заказы принимает «Спектр». Расскажите, что за&nbsp;мероприятие и&nbsp;кто гости.</p></li>
+          <li><h3>Подбор программы</h3><p>Выбираем спектакль или&nbsp;анимацию вместе с&nbsp;художественным руководителем театра.</p></li>
+          <li><h3>Сцена и&nbsp;техника</h3><p>«Спектр» ставит звук, свет, экраны и&nbsp;сцену. Нет сцены&nbsp;— поставим подиум.</p></li>
+          <li><h3>Мероприятие под&nbsp;ключ</h3><p>Программа театра, сцена и&nbsp;техника «Спектра»&nbsp;— один подрядчик, готовое мероприятие.</p></li>
+        </ol>
+        <div class="note"><b>От&nbsp;площадки почти ничего не&nbsp;нужно</b><p>Для спектакля нужна сцена. Если её&nbsp;нет, поставим подиум или&nbsp;предложим анимацию.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Кейс -->
+<section class="sec" aria-labelledby="case-h">
+  <div class="wrap">
+    <div class="case">
+      <div class="rv">
+        <span class="k">Пример</span>
+        <!-- ИМЯ КЛИЕНТА: одно место на странице. Если «Росатом» не согласуют — заменить на «крупной госкорпорации». -->
+        <h2 class="h2" id="case-h">Корпоратив Росатома</h2>
+        <p class="lead">Два формата: сначала артисты театра занимались с&nbsp;детьми, потом на&nbsp;большой сцене показали большой детский спектакль.</p>
+      </div>
+      <ol class="flow">
+        <li class="rv"><div class="framed"><div class="ph">нужно фото: анимация с&nbsp;детьми на&nbsp;этом корпоративе</div></div><b><i>01</i>Анимация для&nbsp;детей</b></li>
+        <li class="rv"><div class="framed"><div class="ph">нужно фото: детский спектакль на&nbsp;большой сцене корпоратива</div></div><b><i>02</i>Большой детский спектакль</b></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Театр и фестиваль -->
+<section class="sec" aria-labelledby="part-h">
+  <div class="wrap">
+    <div class="head-row rv">
+      <div><span class="k">Театр и&nbsp;фестиваль</span><h2 class="h2" id="part-h">«Спектр»&nbsp;— генеральный партнёр Пушкинского театра</h2></div>
+      <a class="btn btn-line" href="/case-pushkino-theatre-festival">Как мы&nbsp;ставим технику</a>
+    </div>
+    <div class="wide rv">
+      <svg class="mask t" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V4Q50 96 0 4Z"/></svg>
+      <img src="https://static.tildacdn.com/tild3931-3433-4830-a564-623463633835/fest-stage-1160.webp" alt="Пушкинский театральный фестиваль, сцена Летнего театра" width="1160" height="870" loading="lazy" decoding="async">
+      <svg class="mask b" viewBox="0 0 100 56" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H100V4Q50 96 0 4Z"/></svg>
+    </div>
+    <div class="fest">
+      <p class="lead rv" style="margin:0">Пушкинский музыкально-драматический театр проводит Пушкинский театральный фестиваль: каждый август на&nbsp;сцене Летнего театра в&nbsp;Центральном парке Пушкино. «Спектр» обеспечивает фестиваль техникой с&nbsp;2024&nbsp;года.</p>
+      <dl class="stats rv">
+        <div><dt>спектаклей за&nbsp;4&nbsp;дня, 2025</dt><dd>9</dd></div>
+        <div><dt>тысячи зрителей, 2025</dt><dd>3,6</dd></div>
+        <div><dt>театров, 2026</dt><dd>14</dd></div>
+      </dl>
+    </div>
+    <div class="rep rv">
+      <div>
+        <h3 class="h3">Что в&nbsp;репертуаре театра</h3>
+        <ul class="tags" aria-label="Примеры спектаклей"><li>«Сватовство гусара»</li><li>«Любовь и&nbsp;голуби»</li><li>«Золотые оперные хиты»</li></ul>
+        <p>Это примеры спектаклей театра. Что подойдёт вашему мероприятию, подберём вместе с&nbsp;художественным руководителем.</p>
+      </div>
+      <a class="go" href="https://teatrpushkino.ru/tags/afisha" target="_blank" rel="noopener">Афиша театра →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Отзывы — заглушки -->
+<section class="sec" aria-labelledby="rev-h">
+  <div class="wrap">
+    <div class="rv"><span class="k">Отзывы</span><h2 class="h2" id="rev-h">Что говорят заказчики</h2></div>
+    <ul class="revs snap" role="list">
+      <li class="rv"><q>Отзыв попросим у&nbsp;клиента</q><span>Имя, должность, компания&nbsp;— уточняем</span></li>
+      <li class="rv"><q>Отзыв попросим у&nbsp;клиента</q><span>Имя, должность, компания&nbsp;— уточняем</span></li>
+      <li class="rv"><q>Отзыв попросим у&nbsp;клиента</q><span>Имя, должность, компания&nbsp;— уточняем</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. Финал -->
+<section class="sec" aria-labelledby="end-h">
+  <div class="wrap final">
+    <div class="rv">
+      <span class="k">Заявка</span>
+      <h2 class="h2" id="end-h">Подберём программу под&nbsp;ваше мероприятие</h2>
+      <p class="lead">Спектакль или&nbsp;анимация, сцена и&nbsp;техника&nbsp;— одной заявкой в&nbsp;«Спектр».</p>
+    </div>
+    <div class="acts rv">
+      <a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету <span aria-hidden="true">→</span></a>
+      <div class="two">
+        <a class="btn btn-line" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener">Проверить дату в&nbsp;Telegram</a>
+        <a class="btn btn-line" href="https://web.max.ru/263464272" target="_blank" rel="noopener">Проверить дату в&nbsp;MAX</a>
+      </div>
+      <p class="tel">или позвоните <a href="tel:+79778100802">+7 (977) 810-08-02</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="top">
+      <div><img src="https://static.tildacdn.com/tild6533-6336-4664-b938-383830333161/logo-white-crop.png" alt="Спектр" width="118" height="28"><p style="max-width:40ch">Техническое обеспечение мероприятий. Москва и&nbsp;Московская область.</p></div>
+      <nav aria-label="Навигация в подвале"><a href="/#services">Услуги</a><a href="/#cases">Кейсы</a><a href="/#agency">Агентствам</a></nav>
+    </div>
+    <div class="soc"><a href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener">Telegram</a><a href="https://web.max.ru/263464272" target="_blank" rel="noopener">MAX</a><a href="tel:+79778100802" style="color:var(--fg)">+7 (977) 810-08-02</a></div>
+    <div class="req"><span class="tbd">Название и&nbsp;реквизиты от&nbsp;заказчика</span><span>Работаем по&nbsp;44-&#8288;ФЗ и&nbsp;223-&#8288;ФЗ</span></div>
+    <div class="legal"><a href="#">Политика обработки персональных данных</a><span>© 2026 «Спектр»</span></div>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar" aria-label="Быстрая связь"><a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету</a><a class="circ" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener" aria-label="Telegram">TG</a><a class="circ" href="https://web.max.ru/263464272" target="_blank" rel="noopener" aria-label="MAX">MAX</a></div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* лента первого экрана: 7 настоящих фото, набор повторяем дважды для бесшовной петли */
+  var photos=[
+    ['img-hosts/bykov-1.jpg'],
+    ['img-hosts/fortovaya.jpg'],
+    ['img-hosts/gavrilov.jpg'],
+    ['img-hosts/bykov-stage.jpg'],
+    ['https://static.tildacdn.com/tild3861-3966-4637-b666-656135373935/fest-rig-504.webp'],
+    ['img-hosts/bykov-2.jpg']
+  ];
+  var track=document.getElementById('track'), html='';
+  for(var k=0;k<2;k++)photos.forEach(function(p,i){
+    html+='<figure class="card"><img src="'+p[0]+'" alt="" decoding="async"'+(k===0&&i<4?' fetchpriority="high"':' loading="lazy"')+'></figure>';
+  });
+  track.innerHTML=html;
+  function setDur(){ /* ~60 px/с, как у референса */
+    var w=track.scrollWidth/2; track.style.setProperty('--reel-dur',Math.max(12,w/60).toFixed(1)+'s');
+  }
+  setDur(); window.addEventListener('resize',setDur,{passive:true});
+
+  /* интро: убрать слой после проигрыша (и страховка по таймеру) */
+  if(root.classList.contains('intro')){
+    var ov=document.querySelector('.intro-ov');
+    var done=function(){root.classList.remove('intro'); if(ov&&ov.parentNode)ov.parentNode.removeChild(ov);};
+    setTimeout(done,2100);
+  }
+
+  /* лента не крутится, когда её не видно — без нагрузки в простое */
+  var reel=document.getElementById('reel'), hdr=document.getElementById('hdr'), mbar=document.getElementById('mbar');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      reel.classList.toggle('paused',!e.isIntersecting);
+    });}).observe(reel);
+    var hero=document.querySelector('.hero');
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      var past=e.intersectionRatio<0.35;
+      hdr.classList.toggle('solid',past); mbar.classList.toggle('show',past);
+    });},{threshold:[0,0.35,1]}).observe(hero);
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });},{rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+  } else {
+    document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
+  }
+  document.addEventListener('visibilitychange',function(){reel.classList.toggle('paused',document.hidden);});
+
+  /* мобильное меню */
+  var mm=document.getElementById('mmenu'), bOpen=document.querySelector('.js-burger'), bClose=document.querySelector('.js-mclose');
+  function setMenu(open){
+    mm.classList.toggle('open',open); bOpen.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
+    (open?bClose:bOpen).focus();
+  }
+  bOpen.addEventListener('click',function(){setMenu(true);});
+  bClose.addEventListener('click',function(){setMenu(false);});
+  mm.addEventListener('click',function(e){if(e.target.closest('nav a'))setMenu(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mm.classList.contains('open'))setMenu(false);});
+})();
+</script>
+</body>
+</html>

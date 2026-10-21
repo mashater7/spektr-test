@@ -51,7 +51,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 
 /* ---------- кнопки ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;border-radius:100px;border:0;
-  font:600 15px/1 Onest,sans-serif;text-transform:uppercase;letter-spacing:.02em;text-decoration:none;cursor:pointer;
+  font:500 15px/1 Onest,sans-serif;letter-spacing:.005em;text-decoration:none;cursor:pointer;
   transition:transform 160ms var(--ease-out),background-color 200ms ease,color 200ms ease,border-color 200ms ease}
 .btn:active{transform:scale(.97)}
 .btn-red{background:var(--red);color:var(--on-red)}
@@ -62,7 +62,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
   .btn-line:hover{box-shadow:inset 0 0 0 1px var(--fg)}
   .btn-light:hover{background:#fff}
 }
-.go{display:inline-flex;align-items:center;gap:8px;font:500 14px/1.2 Onest,sans-serif;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--line-2);padding:6px 0;transition:border-color 200ms ease}
+.go{display:inline-flex;align-items:center;gap:8px;font:400 15px/1.2 Onest,sans-serif;color:var(--fg-2);text-decoration:none;border-bottom:1px solid var(--line-2);padding:6px 0;transition:border-color 200ms ease}
 @media (hover:hover) and (pointer:fine){.go:hover{border-color:var(--red)}}
 
 /* ---------- шапка сайта spectr-svet.ru (из _живой-сейчас.html), стили ограничены .hdr и .mmenu ---------- */
@@ -136,7 +136,7 @@ body.lock{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.hdr .bar,.hdr .tel .hint,.mmenu,.mmenu.open{transition:none}.mmenu{transform:none}}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
 /* фиксированные «уголки» экрана: слева мессенджеры, справа телефон (у референса EN/UA и таймкод) */
-.corner{position:fixed;bottom:44px;z-index:40;display:flex;gap:16px;font:400 14px/1.4 Onest,sans-serif;text-transform:uppercase}
+.corner{position:fixed;bottom:44px;z-index:40;display:flex;gap:16px;font:400 13px/1.4 Onest,sans-serif;letter-spacing:.02em}
 .corner a{text-decoration:none;color:var(--fg);padding:4px 0}
 .corner a+a{color:var(--fg-2)}
 .corner.l{left:52px}
@@ -159,7 +159,7 @@ body.lock{overflow:hidden}
 .vf i:nth-child(2){right:0;bottom:0;border-left:0;border-top:0}
 
 .h1{margin:0;padding:0 24px;text-align:center;position:relative;z-index:3;
-  font:800 clamp(30px,5.5vw,84px)/1.06 Tektur,sans-serif;font-stretch:100%;text-transform:uppercase;letter-spacing:0;
+  font:600 clamp(30px,4.6vw,70px)/1.08 Tektur,sans-serif;font-stretch:92%;text-transform:uppercase;letter-spacing:.01em;
   background:linear-gradient(202deg,#fff 31%,#9a8f8c 82%);-webkit-background-clip:text;background-clip:text;color:transparent;
   text-wrap:balance}
 .h1 span{display:block}
@@ -172,7 +172,12 @@ body.lock{overflow:hidden}
 @keyframes reel{to{transform:translate3d(calc(-50% - var(--card-gap) / 2),0,0)}}
 .card{flex:none;width:var(--card-w);height:var(--card-h);margin:0;background:var(--bg-2)}
 .card.w{width:calc(var(--card-h) * 1.5)}
+.card{position:relative}
 .card img{width:100%;height:100%;object-fit:cover}
+/* подпись кадра = формат */
+.card figcaption{position:absolute;left:12px;bottom:58px;display:flex;align-items:center;gap:8px;padding:6px 10px 6px 8px;
+  background:rgba(9,8,10,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font:400 13px/1.2 Onest,sans-serif;color:var(--fg);white-space:nowrap}
+.card figcaption::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red)}
 .mask{position:absolute;left:0;width:100%;height:56px;pointer-events:none;z-index:2;fill:var(--bg)}
 .mask.t{top:0}
 .mask.b{bottom:0;transform:scaleY(-1)}
@@ -180,7 +185,14 @@ body.lock{overflow:hidden}
 .reel-win::before{left:0;background:linear-gradient(90deg,var(--bg),rgba(9,8,10,0))}
 .reel-win::after{right:0;background:linear-gradient(-90deg,var(--bg),rgba(9,8,10,0))}
 
-.hero-lead{max-width:430px;margin:20px auto 0;padding:0 24px;text-align:center;font:400 15px/1.4 Onest,sans-serif;text-transform:uppercase;position:relative;z-index:3}
+.hero-lead{max-width:470px;margin:20px auto 0;padding:0 24px;text-align:center;font:400 16px/1.5 Onest,sans-serif;color:var(--fg-2);position:relative;z-index:3}
+/* четыре формата прямо на первом экране */
+.fmts{list-style:none;margin:22px auto 0;padding:0 24px;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 30px;position:relative;z-index:3}
+.fmts a{display:inline-flex;align-items:baseline;gap:8px;padding:6px 0;text-decoration:none;font:400 15px/1.3 Onest,sans-serif;color:var(--fg);
+  border-bottom:1px solid transparent;transition:border-color 200ms ease}
+.fmts b{font:500 12px/1 Tektur,sans-serif;letter-spacing:.06em;color:var(--fg-2)}
+@media (hover:hover) and (pointer:fine){.fmts a:hover{border-color:var(--line-2)}}
+.shots{display:none}
 .hero-cta{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:22px;flex-wrap:wrap;padding:0 16px;position:relative;z-index:3}
 .hero-msg{display:none}
 .hero-foot{position:absolute;left:0;right:0;bottom:44px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3;
@@ -203,22 +215,21 @@ body.lock{overflow:hidden}
 @keyframes stripe{0%{transform:scaleY(0);transform-origin:50% 0}45%{transform:scaleY(1);transform-origin:50% 0}55%{transform:scaleY(1);transform-origin:50% 100%}100%{transform:scaleY(0);transform-origin:50% 100%}}
 .intro .h1{animation:rise 800ms var(--ease-out) 700ms both}
 .intro .reel{animation:fadein 900ms var(--ease-out) 820ms both}
-.intro .hero-lead,.intro .hero-cta,.intro .hero-foot{animation:fadein 700ms var(--ease-out) 1000ms both}
+.intro .hero-lead,.intro .fmts,.intro .shots,.intro .hero-cta,.intro .hero-foot{animation:fadein 700ms var(--ease-out) 1000ms both}
 @keyframes rise{from{opacity:0;transform:translate3d(0,28px,0)}to{opacity:1;transform:none}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 
 /* ---------- секции ---------- */
 .sec{padding:clamp(80px,11vw,150px) 0;position:relative}
-.k{display:block;margin:0 0 14px;font:400 12px/1.4 Onest,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--fg)}
-.h2{margin:0;font:800 clamp(28px,4.4vw,64px)/1.1 Tektur,sans-serif;text-transform:uppercase;
-  background:linear-gradient(117deg,#fff 32%,#9a8f8c 93%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 8px rgba(255,255,255,.22));text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}
-.h3{margin:0;font:700 22px/1.3 Tektur,sans-serif;color:var(--fg)}
+.k{display:block;margin:0 0 16px;font:400 11px/1.4 Onest,sans-serif;text-transform:uppercase;letter-spacing:.16em;color:var(--fg-2)}
+.h2{margin:0;font:600 clamp(26px,3.6vw,52px)/1.12 Tektur,sans-serif;font-stretch:92%;text-transform:uppercase;letter-spacing:.01em;
+  background:linear-gradient(117deg,#fff 32%,#9a8f8c 93%);-webkit-background-clip:text;background-clip:text;color:transparent;text-wrap:balance;overflow-wrap:anywhere;hyphens:auto}
+.h3{margin:0;font:500 21px/1.3 Tektur,sans-serif;font-stretch:95%;color:var(--fg)}
 .lead{color:var(--fg-2);max-width:56ch;margin:20px 0 0;font-size:16px}
 .small{font-size:14px}
 .muted{color:var(--fg-2)}
 .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.head-row .lead{max-width:36ch;margin:0;text-transform:uppercase;font-size:14px;color:var(--fg)}
+.head-row .lead{max-width:36ch;margin:0;font-size:15px;color:var(--fg-2)}
 
 /* фото в уголках-рамке */
 .framed{position:relative;padding:10px}
@@ -238,29 +249,29 @@ body.lock{overflow:hidden}
 .fmt .pic{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--bg-2)}
 .fmt .pic img{width:100%;height:100%;object-fit:cover}
 .fmt .pic .ph{position:absolute;inset:0;min-height:0}
-.nn{display:inline-grid;place-items:center;width:36px;height:36px;background:var(--red);color:var(--on-red);font:700 13px/1 Tektur,sans-serif}
+.nn{display:block;color:var(--fg-2);font:500 13px/1 Tektur,sans-serif;letter-spacing:.06em}
 .fmt p{margin:0;color:var(--fg-2);font-size:15px}
-.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.tags li{font-size:12px;text-transform:uppercase;letter-spacing:.03em;border:1px solid var(--line);padding:5px 9px}
-.meta{margin-top:auto !important;font-size:12px !important;text-transform:uppercase;letter-spacing:.03em;color:var(--fg-2)}
+.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px}
+.tags li{font-size:14px;color:var(--fg);display:inline-flex;align-items:center;gap:8px}
+.tags li::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--red);flex:none}
+.meta{margin-top:auto !important;padding-top:12px;border-top:1px solid var(--line);font-size:13px !important;color:var(--fg-2)}
 
 /* заявление по центру с красными словами и фото-вставками */
 .stmt{text-align:center}
 .stmt .k{text-align:center}
-.say{margin:0 auto;max-width:1100px;font:800 clamp(26px,3.9vw,56px)/1.22 Tektur,sans-serif;text-transform:uppercase;color:var(--fg);
-  text-shadow:0 0 12px rgba(255,255,255,.25)}
-.say em{font-style:normal;color:var(--red);text-shadow:0 0 14px rgba(255,65,34,.35)}
+.say{margin:0 auto;max-width:1000px;font:500 clamp(24px,3.1vw,44px)/1.3 Tektur,sans-serif;font-stretch:92%;color:var(--fg-2);text-wrap:balance}
+.say em{font-style:normal;color:var(--fg)}
 .say .chip{display:inline-block;vertical-align:middle;width:2.2em;height:1em;margin:0 .12em;overflow:hidden;position:relative;top:-.06em}
 .say .chip img{width:100%;height:100%;object-fit:cover}
-.say-by{margin:22px 0 0;color:var(--fg-2);font-size:14px;text-transform:uppercase;letter-spacing:.03em}
+.say-by{margin:24px 0 0;color:var(--fg-2);font-size:14px}
 
 .hosts{list-style:none;margin:64px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
 .hosts li{display:flex;flex-direction:column;gap:14px}
 .hosts .pic{aspect-ratio:3/4;overflow:hidden;background:var(--bg-2)}
 .hosts .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
-.hosts .h3{font-size:24px}
+.hosts .h3{font-size:22px}
 .hosts p{margin:0;color:var(--fg-2);font-size:15px}
-.hosts .reg{color:var(--fg);text-transform:uppercase;font-size:13px;letter-spacing:.03em}
+.hosts .reg{color:var(--fg);font-size:14px}
 
 /* как это работает: фото слева, 01–04 справа (как «We embody art in visuals») */
 .how{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);margin-top:56px;align-items:start}
@@ -268,11 +279,11 @@ body.lock{overflow:hidden}
 .how .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:30px;counter-reset:s}
 .steps li{counter-increment:s}
-.steps li::before{content:"0" counter(s);display:block;color:var(--red);font:700 13px/1 Tektur,sans-serif;margin-bottom:8px}
-.steps h3{margin:0 0 6px;font:500 15px/1.4 Onest,sans-serif;text-transform:uppercase}
+.steps li::before{content:"0" counter(s);display:block;color:var(--fg-2);font:500 13px/1 Tektur,sans-serif;letter-spacing:.06em;margin-bottom:10px}
+.steps h3{margin:0 0 6px;font:500 17px/1.35 Onest,sans-serif}
 .steps p{margin:0;color:var(--fg-2);font-size:15px;max-width:44ch}
 .note{margin-top:40px;border-top:1px solid var(--line);padding-top:20px}
-.note b{display:block;font:700 18px/1.3 Tektur,sans-serif;margin-bottom:6px}
+.note b{display:block;font:500 18px/1.3 Tektur,sans-serif;margin-bottom:6px}
 .note p{margin:0;color:var(--fg-2);font-size:15px}
 
 /* кейс */
@@ -280,8 +291,8 @@ body.lock{overflow:hidden}
 .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .flow li{display:flex;flex-direction:column;gap:12px}
 .flow .framed{aspect-ratio:4/3}
-.flow b{font:500 14px/1.4 Onest,sans-serif;text-transform:uppercase}
-.flow b i{font-style:normal;color:var(--red);font-family:Tektur,sans-serif;margin-right:8px}
+.flow b{font:500 15px/1.4 Onest,sans-serif}
+.flow b i{font-style:normal;color:var(--fg-2);font-family:Tektur,sans-serif;font-weight:500;margin-right:8px}
 
 /* фестиваль: широкое фото с той же «барабанной» маской */
 .wide{position:relative;margin-top:44px;overflow:hidden;aspect-ratio:16/7;background:var(--bg-2)}
@@ -294,8 +305,8 @@ body.lock{overflow:hidden}
 .stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 40px;margin:0}
 .stats div{display:flex;flex-direction:column}
 .stats dd{order:-1}
-.stats dd{margin:0;font:800 clamp(40px,5vw,72px)/1 Tektur,sans-serif;background:linear-gradient(160deg,#fff 30%,#9a8f8c 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stats dt{font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--fg-2);margin-top:8px;max-width:16ch}
+.stats dd{margin:0;font:500 clamp(40px,5vw,68px)/1 Tektur,sans-serif;font-stretch:90%;background:linear-gradient(160deg,#fff 30%,#9a8f8c 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats dt{font-size:14px;color:var(--fg-2);margin-top:8px;max-width:16ch}
 .rep{margin-top:44px;border:1px solid var(--line);padding:24px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .rep .h3{font-size:18px;margin-bottom:12px}
 .credit{margin:16px 0 0;font-size:12px;color:var(--fg-2)}
@@ -304,17 +315,17 @@ body.lock{overflow:hidden}
 /* отзывы — заглушки */
 .revs{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .revs li{border:1px dashed rgba(248,243,243,.25);padding:24px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
-.revs q{quotes:none;font:700 18px/1.35 Tektur,sans-serif;color:var(--fg-2)}
-.revs span{font-size:13px;text-transform:uppercase;letter-spacing:.03em;color:var(--fg-2)}
+.revs q{quotes:none;font:500 18px/1.4 Tektur,sans-serif;font-stretch:95%;color:var(--fg-2)}
+.revs span{font-size:14px;color:var(--fg-2)}
 
 /* финал (как «Drop us a line») */
 .final{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
 .fin-acts{display:flex;flex-direction:column;gap:12px}
-.fin-acts .btn{width:100%;min-height:64px;font-size:16px}
+.fin-acts .btn{width:100%;min-height:60px;font-size:16px}
 .fin-acts .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.fin-acts .two .btn{min-height:52px;font-size:13px;padding:0 14px}
-.fin-acts .tel{margin:10px 0 0;font-size:14px;color:var(--fg-2);text-transform:uppercase}
-.fin-acts .tel a{font:700 22px/1.3 Tektur,sans-serif;color:var(--fg);text-decoration:none;display:block;margin-top:4px;text-transform:none}
+.fin-acts .two .btn{min-height:52px;font-size:14px;padding:0 14px}
+.fin-acts .tel{margin:10px 0 0;font-size:14px;color:var(--fg-2)}
+.fin-acts .tel a{font:500 22px/1.3 Tektur,sans-serif;color:var(--fg);text-decoration:none;display:block;margin-top:4px;text-transform:none}
 
 /* подвал */
 .ftr{border-top:1px solid var(--line);padding:48px 0 120px;font-size:14px;color:var(--fg-2)}
@@ -322,14 +333,11 @@ body.lock{overflow:hidden}
 .ftr .top img{height:28px;width:auto;margin-bottom:14px}
 .ftr p{margin:0}
 .ftr nav{display:flex;gap:28px;flex-wrap:wrap}
-.ftr nav a,.ftr .soc a{text-transform:uppercase;text-decoration:none;color:var(--fg);padding:6px 0}
+.ftr nav a,.ftr .soc a{text-decoration:none;color:var(--fg);padding:6px 0}
 .ftr .soc{display:flex;gap:24px;margin-top:28px}
-.ftr .soc a{color:var(--red);font:700 13px/1 Tektur,sans-serif;letter-spacing:.04em}
+.ftr .soc a{color:var(--fg);font:500 14px/1 Onest,sans-serif}
 .ftr .req,.ftr .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:20px}
 .ftr .tbd{border-bottom:1px dashed var(--line-2)}
-
-/* мобильная панель связи */
-.mbar{display:none}
 
 /* появление при прокрутке */
 .rv{opacity:0;transform:translate3d(0,18px,0);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}
@@ -380,13 +388,6 @@ body.lock{overflow:hidden}
   .rep{padding:18px}
   .revs{margin-top:32px}
   .fin-acts .two{grid-template-columns:1fr}
-  .ftr{padding-bottom:110px}
-  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-    background:rgba(9,8,10,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);
-    transform:translateY(110%);transition:transform 300ms var(--ease-out)}
-  .mbar.show{transform:none}
-  .mbar .btn{flex:1;min-height:48px;padding:0 16px}
-  .mbar .circ{display:inline-grid;place-items:center;min-width:48px;height:48px;padding:0 10px;border-radius:100px;box-shadow:inset 0 0 0 1px var(--line-2);text-decoration:none;font:600 12px/1 Onest,sans-serif;text-transform:uppercase}
   .intro-ov .stripes i{width:17%}
   .intro-ov .stripes i:nth-child(n+6){display:none}
 }
@@ -463,11 +464,55 @@ body.lock{overflow:hidden}
   .fin-acts .two .btn{min-height:56px;font-size:12px;line-height:1.2;white-space:normal;text-align:center;padding:0 10px}
 
   /* подвал */
-  .ftr{padding:32px 0 96px}
+  .ftr{padding:32px 0 40px}
   .ftr .top{gap:16px}
   .ftr nav{gap:20px}
   .ftr .soc{margin-top:16px}
   .ftr .req,.ftr .legal{margin-top:12px;font-size:13px}
+}
+/* ---------- телефон: спокойный первый экран и лёгкая типографика (правка 21.10, v2) ---------- */
+@media (max-width:760px){
+  .hero{min-height:calc(100svh - 60px);padding:12px 0 20px;justify-content:flex-start;align-items:stretch}
+  .hero .glow,.hero .vf,.reel,.fmts,.hero-foot,.hero-msg{display:none}
+  .shots{display:block;order:-1;position:relative;margin:0 12px;height:clamp(340px,54svh,620px);overflow:hidden;background:var(--bg-2);isolation:isolate}
+  /* новый кадр проявляется поверх старого; старый гаснет мгновенно, когда уже закрыт — без провала в темноту */
+  .shot{position:absolute;inset:0;margin:0;opacity:0;z-index:0;transition:opacity 0s linear 1500ms}
+  .shot.on{opacity:1;z-index:1;transition:opacity 1400ms cubic-bezier(.4,0,.2,1)}
+  .shot img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 0s linear 1500ms}
+  .shot.on img{transform:scale(1);transition:transform 6400ms cubic-bezier(.33,0,.2,1)}
+  .shots::after{content:"";position:absolute;left:0;right:0;bottom:0;height:52%;z-index:2;pointer-events:none;
+    background:linear-gradient(to top,rgba(9,8,10,.9),rgba(9,8,10,.5) 48%,rgba(9,8,10,0))}
+  .shots-nav{position:absolute;left:0;right:0;bottom:0;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;padding:0 14px 6px}
+  .shots-nav button{appearance:none;-webkit-appearance:none;background:none;border:0;border-radius:0;margin:0;color:rgba(248,243,243,.62);text-align:left;
+    font:400 13px/1.25 Onest,sans-serif;padding:11px 0 9px;min-height:44px;position:relative;cursor:pointer;transition:color 400ms ease;-webkit-tap-highlight-color:transparent}
+  .shots-nav button::before,.shots-nav button::after{content:"";position:absolute;left:0;right:0;top:0;height:1px}
+  .shots-nav button::before{background:rgba(248,243,243,.2)}
+  .shots-nav button::after{background:var(--fg);transform:scaleX(0);transform-origin:0 50%}
+  .shots-nav button[aria-pressed="true"]{color:var(--fg)}
+  .shots-nav button[aria-pressed="true"]::after{transform:scaleX(1);transition:transform var(--shot-ms,4800ms) linear}
+  .shots-nav b{font:500 11px/1 Tektur,sans-serif;letter-spacing:.06em;color:inherit;opacity:.7;margin-right:6px}
+
+  .h1{order:0;font:600 26px/1.12 Tektur,sans-serif;font-stretch:92%;text-transform:none;letter-spacing:0;text-align:left;padding:0 16px;margin:18px 0 0}
+  .hero-lead{text-align:left;margin:10px 0 0;padding:0 16px;max-width:none;font-size:15px;line-height:1.45;color:var(--fg-2)}
+  .hero-cta{justify-content:flex-start;margin-top:16px;padding:0 16px;gap:12px 22px;flex-wrap:nowrap}
+  .hero-cta .btn{width:auto;min-height:48px;padding:0 20px;white-space:nowrap}
+  .hero-cta .go{white-space:nowrap}
+
+  .h2{font-size:clamp(24px,7vw,30px);text-transform:none;letter-spacing:0;line-height:1.15}
+  .k{font-size:11px;margin-bottom:12px}
+  .h3{font-size:19px}
+  .tags li{font-size:13px}
+  .say{font-size:clamp(20px,5.8vw,23px);line-height:1.35}
+  .hosts .reg{font-size:13px}
+  .steps h3{font-size:15px}
+  .flow b{font-size:13px}
+  .stats dd{font-size:34px}
+  .stats dt{font-size:13px}
+  .fin-acts .two .btn{font-size:13px}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){
+  .shot,.shot img,.shot.on img{transition:none;transform:none}
+  .shots-nav button[aria-pressed="true"]::after{transition:none}
 }
 @media (min-width:761px) and (max-height:820px){:root{--card-h:min(330px,36vh);--card-w:calc(var(--card-h) * .667)}}
 
@@ -478,7 +523,6 @@ body.lock{overflow:hidden}
   .rv{transform:none;transition:opacity 300ms ease}
   .btn:active{transform:none}
   .mmenu,.mmenu.open{transform:none}
-  .mbar{transition:none}
 }
 </style>
 </head>
@@ -512,7 +556,27 @@ body.lock{overflow:hidden}
     </div>
   </div>
 
+  <!-- телефон: крупный кадр со спокойной сменой, подписи = четыре формата -->
+  <div class="shots" id="shots" role="region" aria-label="Четыре формата в кадрах">
+    <figure class="shot on"><img src="img-web/spektakl-domovenok.webp" alt="Детский спектакль театра «Домовёнок Кузя»" width="1200" height="800" loading="lazy" decoding="async" style="object-position:62% 50%"></figure>
+    <figure class="shot"><img src="img-web/deti-ezhik.webp" alt="Артистка театра в костюме ёжика играет рядом с детьми" width="1200" height="801" loading="lazy" decoding="async" style="object-position:52% 40%"></figure>
+    <figure class="shot"><img src="img-web/vzroslye-petr.webp" alt="Артисты театра в образах Петра I и Ивана Грозного встречают гостей" width="900" height="801" loading="lazy" decoding="async" style="object-position:40% 30%"></figure>
+    <figure class="shot"><img src="img-hosts/bykov-stage.jpg" alt="Дмитрий Быков ведёт мероприятие на сцене" width="799" height="1200" loading="lazy" decoding="async" style="object-position:50% 25%"></figure>
+    <div class="shots-nav" role="group" aria-label="Форматы">
+      <button type="button" aria-pressed="true"><b>01</b>Спектакль</button>
+      <button type="button" aria-pressed="false"><b>02</b>Анимация для&nbsp;детей</button>
+      <button type="button" aria-pressed="false"><b>03</b>Анимация для&nbsp;взрослых</button>
+      <button type="button" aria-pressed="false"><b>04</b>Ведущий</button>
+    </div>
+  </div>
+
   <p class="hero-lead">Артисты Пушкинского музыкально-драматического театра, а&nbsp;сцена и&nbsp;техника&nbsp;— от&nbsp;«Спектра». Мероприятие под&nbsp;ключ.</p>
+  <ul class="fmts" role="list" aria-label="Четыре формата">
+    <li><a href="#fmt-h"><b>01</b>Спектакль</a></li>
+    <li><a href="#fmt-h"><b>02</b>Анимация для&nbsp;детей</a></li>
+    <li><a href="#fmt-h"><b>03</b>Анимация для&nbsp;взрослых</a></li>
+    <li><a href="#fmt-h"><b>04</b>Ведущий</a></li>
+  </ul>
   <div class="hero-cta">
     <a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету <span aria-hidden="true">→</span></a>
     <a class="go" href="https://teatrpushkino.ru/tags/afisha" target="_blank" rel="noopener">Афиша театра →</a>
@@ -540,7 +604,7 @@ body.lock{overflow:hidden}
         <p class="meta">Длительность: уточняем · Цена: уточняем</p>
       </li>
       <li class="rv">
-        <div class="pic"><div class="ph">нужно фото: артисты театра проводят анимацию с&nbsp;детьми</div></div>
+        <div class="pic"><img src="img-web/deti-ezhik.webp" alt="Артистка театра в костюме ёжика играет рядом с детьми" width="1200" height="801" loading="lazy" decoding="async" style="object-position:55% 50%"></div>
         <span class="nn" aria-hidden="true">02</span>
         <h3 class="h3">Анимация для&nbsp;детей</h3>
         <p>Артисты театра развлекают детей на&nbsp;вашем мероприятии.</p>
@@ -548,7 +612,7 @@ body.lock{overflow:hidden}
         <p class="meta">Длительность: уточняем · Цена: уточняем</p>
       </li>
       <li class="rv">
-        <div class="pic"><div class="ph">нужно фото: анимационная программа для&nbsp;взрослых гостей</div></div>
+        <div class="pic"><img src="img-web/vzroslye-petr.webp" alt="Артисты театра в образах Петра I и Ивана Грозного встречают гостей" width="900" height="801" loading="lazy" decoding="async" style="object-position:45% 40%"></div>
         <span class="nn" aria-hidden="true">03</span>
         <h3 class="h3">Анимация для&nbsp;взрослых</h3>
         <p>Анимационная программа для&nbsp;взрослых гостей: на&nbsp;корпоративе или&nbsp;празднике.</p>
@@ -564,6 +628,7 @@ body.lock{overflow:hidden}
         <p class="meta">Длительность: уточняем · Цена: уточняем</p>
       </li>
     </ul>
+    <p class="credit">Фото анимации: Пушкинский театр, временно&nbsp;— до&nbsp;своих фото</p>
   </div>
 </section>
 
@@ -713,33 +778,60 @@ body.lock{overflow:hidden}
   </div>
 </footer>
 
-<div class="mbar" id="mbar" aria-label="Быстрая связь"><a class="btn btn-red" href="/?quiz=1&amp;dir=%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B0%20%D1%81%20%D1%82%D0%B5%D0%B0%D1%82%D1%80%D0%BE%D0%BC">Посчитать смету</a><a class="circ" href="https://t.me/MorozovTeamLead" target="_blank" rel="noopener" aria-label="Telegram">TG</a><a class="circ" href="https://web.max.ru/263464272" target="_blank" rel="noopener" aria-label="MAX">MAX</a></div>
 
 <script>
 (function(){
   var root=document.documentElement;
   var rm=window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* лента первого экрана: 7 настоящих фото, набор повторяем дважды для бесшовной петли */
+  /* лента первого экрана (только десктоп): каждый кадр подписан форматом, набор повторяем дважды для бесшовной петли */
+  var S='Спектакль',D='Анимация для детей',V='Анимация для взрослых',H='Ведущий';
   var photos=[
-    ['img-fest/fest-442824.webp','w'],
-    ['img-fest/fest-442822.webp'],
-    ['img-fest/fest-442870.webp','w'],
-    ['img-fest/fest-442845.webp'],
-    ['img-fest/fest-442825.webp','w'],
-    ['img-fest/fest-442827.webp'],
-    ['img-fest/fest-442841.webp','w'],
-    ['img-fest/fest-442868.webp']
+    ['img-web/vzroslye-petr.webp','',V],
+    ['img-web/deti-ezhik.webp','w',D],
+    ['img-hosts/bykov-stage.jpg','',H],
+    ['img-web/spektakl-domovenok.webp','w',S],
+    ['img-fest/fest-442845.webp','',S],
+    ['img-web/deti-zal.webp','w',D],
+    ['img-fest/fest-442822.webp','',S],
+    ['img-web/vzroslye-promenad.webp','w',V],
+    ['img-fest/fest-442824.webp','w',S],
+    ['img-fest/fest-442868.webp','',S]
   ];
-  var track=document.getElementById('track'), html='';
-  for(var k=0;k<2;k++)photos.forEach(function(p,i){
-    html+='<figure class="card'+(p[1]?' w':'')+'"><img src="'+p[0]+'" alt="" decoding="async"'+(k===0&&i<4?(i<2?' fetchpriority="high"':''):' loading="lazy"')+'></figure>';
-  });
-  track.innerHTML=html;
+  var track=document.getElementById('track'), built=false;
+  var desk=window.matchMedia('(min-width: 761px)');
   function setDur(){ /* ~60 px/с, как у референса */
-    var w=track.scrollWidth/2; track.style.setProperty('--reel-dur',Math.max(12,w/60).toFixed(1)+'s');
+    if(!built)return; var w=track.scrollWidth/2; track.style.setProperty('--reel-dur',Math.max(12,w/60).toFixed(1)+'s');
   }
-  setDur(); window.addEventListener('resize',setDur,{passive:true});
+  function buildReel(){
+    if(built||!desk.matches)return; built=true; var html='';
+    for(var k=0;k<2;k++)photos.forEach(function(p,i){
+      html+='<figure class="card'+(p[1]?' w':'')+'"><img src="'+p[0]+'" alt="" decoding="async"'+(k===0&&i<4?(i<2?' fetchpriority="high"':''):' loading="lazy"')+'><figcaption>'+p[2]+'</figcaption></figure>';
+    });
+    track.innerHTML=html; setDur();
+  }
+  buildReel();
+  if(desk.addEventListener)desk.addEventListener('change',buildReel);
+  window.addEventListener('resize',setDur,{passive:true});
+
+  /* телефон: крупный кадр, медленный кроссфейд + лёгкий наезд, ~4,8 с на кадр; стоит, когда кадр не виден */
+  var shots=document.getElementById('shots');
+  var shotCtl=null;
+  if(shots){
+    var sl=shots.querySelectorAll('.shot'), bt=shots.querySelectorAll('.shots-nav button'), cur=0, tm=null, vis=false, MS=4800;
+    shots.style.setProperty('--shot-ms',MS+'ms');
+    var show=function(i){
+      sl[cur].classList.remove('on'); bt[cur].setAttribute('aria-pressed','false');
+      cur=(i+sl.length)%sl.length;
+      void bt[cur].offsetWidth; /* перезапуск полоски прогресса */
+      sl[cur].classList.add('on'); bt[cur].setAttribute('aria-pressed','true');
+    };
+    var stop=function(){clearTimeout(tm);tm=null;};
+    var run=function(){stop(); if(rm.matches||!vis||document.hidden)return; tm=setTimeout(function(){show(cur+1);run();},MS);};
+    Array.prototype.forEach.call(bt,function(b,i){b.addEventListener('click',function(){show(i);run();});});
+    shotCtl={set:function(v){var was=vis;vis=v; if(v&&!was){show(cur);run();} if(!v)stop();},vis:function(){return vis;},run:run};
+    if(rm.addEventListener)rm.addEventListener('change',function(){run();});
+  }
 
   /* интро: убрать слой после проигрыша (и страховка по таймеру) */
   if(root.classList.contains('intro')){
@@ -749,16 +841,18 @@ body.lock{overflow:hidden}
   }
 
   /* лента не крутится, когда её не видно — без нагрузки в простое */
-  var reel=document.getElementById('reel'), hdr=document.getElementById('hdr'), mbar=document.getElementById('mbar');
+  var reel=document.getElementById('reel'), hdr=document.getElementById('hdr');
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){es.forEach(function(e){
       reel.classList.toggle('paused',!e.isIntersecting);
     });}).observe(reel);
+    if(shotCtl)new IntersectionObserver(function(es){es.forEach(function(e){
+      shotCtl.set(e.isIntersecting);
+    });},{threshold:0.25}).observe(shots);
     var hero=document.querySelector('.hero');
     new IntersectionObserver(function(es){es.forEach(function(e){
-      var past=e.intersectionRatio<0.35;
-      mbar.classList.toggle('show',past); document.body.classList.toggle('hero-on',e.isIntersecting);
-    });},{threshold:[0,0.35,1]}).observe(hero);
+      document.body.classList.toggle('hero-on',e.isIntersecting);
+    });}).observe(hero);
     var io=new IntersectionObserver(function(es){es.forEach(function(e){
       if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
     });},{rootMargin:'0px 0px -8% 0px'});
@@ -766,7 +860,7 @@ body.lock{overflow:hidden}
   } else {
     document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
   }
-  document.addEventListener('visibilitychange',function(){reel.classList.toggle('paused',document.hidden);});
+  document.addEventListener('visibilitychange',function(){reel.classList.toggle('paused',document.hidden); if(shotCtl)shotCtl.run();});
 
   /* меню и шапка — поведение как на сайте */
   var menu=document.getElementById('mmenu'),burger=document.querySelector('.js-burger'),mclose=menu.querySelector('.js-mclose');
